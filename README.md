@@ -22,5 +22,18 @@
 		- User can create different lists for groups
 			* ideas
 			* things to do 
-			* things to get done
+			* things to get done etc
+	- There will be sections dictating tasks that are completed, pending to be completed and ideas that anyone in the group can contribute to
+
+# Stretch Goals
+	- Subsections can be added to further breakdown 'legs' of the trip 
+		- Example - A trip to Japan can be broken down into legs containing subsections that contain info for a trip to Tokyo or Osaka
+	- A cost breakdown will be determined based on events added to a completed list
+
+
+### WIREFRAMES:
+1. 
+2. 
+3. 
+
 
