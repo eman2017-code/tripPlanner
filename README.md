@@ -40,7 +40,7 @@
 3. https://wireframe.cc/6DyqUJ
 	- Create Trip Page
 
-###Model Schemas
+### Model Schemas:
 ```javascript
 const userSchema = new mongoose.Schema({
 	email: {type: String, required: true},
