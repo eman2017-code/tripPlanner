@@ -1,0 +1,26 @@
+{
+  "name": "tripplanner",
+  "version": "1.0.0",
+  "description": "- User will see a register form and a sign in form when app first loads \t- If user does not have an account \t\t- they will not be able to sign into app. Error will pop up if they try and enter information and it is incorrect \t\t- the registration form will ask for;  \t\t1. First Name and Last Name   \t\t2. Username    \t\t3. Email address      \t\t4. Address \t\t5. Password \t- If user does have an account,  \t\t- They will be asked to sign in with their information \t\t1. Username \t\t2. Password \t- They will be brought into the landing page where all the main sections of the website are shown \t- User can create a trip \t\t* User can add other people to the group \t\t * This can be done by finding a user by their username(or unique object ID) and adding them to the array that contains just your group members \t\t* User who created the group will be a moderator \t\t *Additional users can be made moderators if desired by original creator \t\t \t*Creator has full functionality  \t\t \t\t*Moderators can add/delete/edit lists but cannot delete group or trip only creator can \t\t \t\t\t* Fellow Travellers can only make suggestions to be potentially but can not directly update the lists themselves \t\t* User will select destination for group \t\t* User and all the other members of the group will be able to add to the list \t\t\t* Things to Do \t\t\t\t*Tasks and Attractions that need to be completed so they can be eventually added to the intinerary \t\t\t* Itenerary \t\t\t\t* A completed list of tasks and attractions that are added to the trip interaray. Basically a completed list \t\t\t* Ideas and suggestions from group member. \t\t\t\t* This is an area where the group can congregate to share potential ideas and suggestions to get other users inputs and possibly add it to their lists \t- User can see their current trips, past trips, and groups they are currenty apart of \t- User can see most asked questions and and see answer (FAQ Form) \t- Trip Advisor/Points of Interest API \t\t- User will be to see recommendations/helpful tips based on destination from actual people that are then added into a suggestions area for the group to see.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eman2017-code/tripPlanner.git"
+  },
+  "keywords": [
+    "trip-planner"
+  ],
+  "author": "Emmanuel Miller & Griffin Delgado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eman2017-code/tripPlanner/issues"
+  },
+  "homepage": "https://github.com/eman2017-code/tripPlanner#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  }
+}
