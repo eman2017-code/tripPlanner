@@ -76,6 +76,16 @@ router.post('/', async(req, res, next) => {
 	} catch(err){
 		next(err)
 	}
+});
+
+router.get('/logout', async(req, res, next) => {
+	try {
+		await req.session.destroy();
+		res.redirect('/users')
+		console.log('ths is the logout working');
+	} catch(err){
+		next(err)
+	}
 })
 
 
