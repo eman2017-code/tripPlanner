@@ -21,8 +21,11 @@
 		* User can select destination for group
 		* User and all the other members of the group will be able to add to the list
 			* Things to Do
+				*Tasks and Attractions that need to be completed so they can be eventually added to the intinerary
 			* Itenerary
-			* Things to potentially get done (Wish List) etc.
+				* A completed list of tasks and attractions that are added to the trip interaray. Basically a completed list
+			* Ideas and suggestions from group member.
+				* This is an area where the group can congregate to share potential ideas and suggestions to get other users inputs and possibly add it to their lists
 	- User can see their current trips,past trips and groups they are currenty apart of
 	- User can see most asked questions and and see answer (FAQ Form)
 	- Trip Advisor/Points of Interest API
