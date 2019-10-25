@@ -17,7 +17,10 @@
 		* User can add other people to the group
 		 * This can be done by finding a user by their username(or unique object ID) and adding them to the array that contains just your group members
 		* User who created the group will be a moderator
-		 *Additional users can be made moderators if desired by original moderator
+		 *Additional users can be made moderators if desired by original creator
+		 	*Creator has full functionality 
+		 		*Moderators can add/delete/edit lists but cannot delete group or trip only creator can
+		 			* Fellow Travellers can only make suggestions to be potentially but can not directly update the lists themselves
 		* User will select destination for group
 		* User and all the other members of the group will be able to add to the list
 			* Things to Do
