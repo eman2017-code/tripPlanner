@@ -3,25 +3,26 @@
 	- If user does not have an account
 		- they will not be able to sign into app. Error will pop up if they try and enter information and it is incorrect
 		- the registration form will ask for; 
-			1. First Name and Last Name  
-			2. Username   
-			3. Email address     
-			4. Address
-			5. Password
+		1. First Name and Last Name  
+		2. Username   
+		3. Email address     
+		4. Address
+		5. Password
 	- If user does have an account, 
 		- They will be asked to sign in with their information
-			1. Username
-			2. Password
+		1. Username
+		2. Password
 	- They will be brought into the landing page where all the main sections of the website are shown
 	- User can create a trip
 		* User can add other people to the group
 		* User who created the group will be the moderator
 		* User can select destination for group
-		* User can create different lists for groups
-			* ideas
-			* things to do 
-			* things to get done etc
-	- There will be sections dictating tasks that are completed, pending to be completed and ideas that anyone in the group can contribute to
+		* User and all the other members of the group will be able to add to the list
+			* Things to Do
+			* Itenerary
+			* Things to potentially get done 
+	- User can see their current trips and past trips they have gone on
+	- User can see most asked questions and and see answer (FAQ Form)
 
 ## STRETCH-GOALS
 	- Subsections can be added to further breakdown 'legs' of the trip 
@@ -30,12 +31,12 @@
 	- A cost breakdown will be determined based on events added to a completed list
 
 ### WIREFRAMES:
-	- Log In/Sign Up Form
 1. https://wireframe.cc/nKojLg
-	- Landing page
+	- Log In/Sign Up Form
 2. https://wireframe.cc/GVVxU9
-	- Create Trip Page
+	- Landing page
 3. https://wireframe.cc/6DyqUJ
+	- Create Trip Page
 
 ###Model Schemas
 ```javascript
