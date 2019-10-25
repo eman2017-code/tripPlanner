@@ -16,6 +16,32 @@ router.get('/new', (req, res) => {
 router.get('/login', (req, res) => {
 	res.render('users/login.ejs')
 })
+//loogin route
+router.post('/login', async(req, res, next) => {
+	try {//this is findini a user object that matches thhe input username on th login form
+		const foundUsers = await User.find({
+			username: req.body.username
+		})//if no user is found with that username direct to login page
+		if(foundUsers.length === 0){
+			console.log('username does not exist')
+			res.redirect('/users/login')
+		} else {
+			const pw = req.body.password
+			console.log(foundUsers[0]);
+			if(bcrypt.compareSync(pw, foundUsers[0].password)){
+				req.session.loggedIn = true;
+				req.session.username = foundUsers[0].username
+				res.redirect('/users')
+			} else {
+				console.log('invalid password');
+				res.redirect('/users/login')
+			}
+
+		}
+	} catch(err){
+		next(err)
+	}
+})
 //registration route
 router.post('/', async(req, res, next) => {
 	//finding if username already exists
