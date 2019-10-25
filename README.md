@@ -52,42 +52,36 @@
 const userSchema = new mongoose.Schema({
 	email: {type: String, required: true},
 	username: {type: String, required: true},
-	password: {type: String, required: true},
-	makeMod: {type:: Boolean},
-	fellowTravellers: {type: Boolean}
-
+	password: {type: String, required: true}
 })
 
-
-
-const groupSchema = new mongoose.Schema({
-	creator: mongoose.schema.Types.ObjectId
-	ref: user,
-	moderators: {[object]} //These are designated by the creator that are allowed to update certain info others arent
-	fellowTravellers: {[object]} //These are everyone else going on the trip that aren't mods. They can access all the same information but cannot make updates. They can only add 'suggestions' that can be be 'approved' by a mod to add to the trip
-})
 
 const tripSchema = new mongoose.Schema({
-	destination: {type: String}, //Where you are going
-	length: {String}, //Total length of trip
-	cost: {type: Number}, //cost breakdown of trip - basically a calculator that automatically adds costs you can input into things on the list
-})
-
-const attricationsSchema = new mongoose.Schema({//specific attractions at set destination. ie, going to a museum
-	name: {type: String},
-	location: {type: String},
-	cost: {type: Number},
-	notes: {type: String}
-})
-
-const tasksSchema = new mongoose.Schema({//specific tasks that need to be completed but arent a 'thing to do', ie. booking your hotel
-	name: {type: String},
-	location: {type: String},
-	time-frame: 
-	notes: {type: String}
+    
+    creator: ObjectID (User)
+    moderators: [ObjectID (User)]
+    members: [ObjectID (User)]
+    startDate: Date
+    endDate: Date
+    title: text
+    dest: text
+    desc: text
+    plannedItems: [TripItem.Schema] 
+    itemsToPlan: [TripItem.schema]
+    wishlist: [TripItem.schema]
 
 })
 
+
+const tripItemSchema = new mongoose.Schema({
+    name: String,
+    location: String,
+    cost: Number,
+    notes: String,
+    date/Time: Date,
+    dueDate: Date
+
+})
 ```
 
 
