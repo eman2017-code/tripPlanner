@@ -25,15 +25,17 @@
 			* things to get done etc
 	- There will be sections dictating tasks that are completed, pending to be completed and ideas that anyone in the group can contribute to
 
-# Stretch Goals
 	- Subsections can be added to further breakdown 'legs' of the trip 
 		- Example - A trip to Japan can be broken down into legs containing subsections that contain info for a trip to Tokyo or Osaka
 	- A cost breakdown will be determined based on events added to a completed list
 
 
 ### WIREFRAMES:
-1. 
-2. 
-3. 
+1. https://wireframe.cc/nKojLg
+	- Log In/Sign Up Form
+2. https://wireframe.cc/GVVxU9
+	- Landing page
+3. https://wireframe.cc/6DyqUJ
+	- Create Trip Page
 
 
