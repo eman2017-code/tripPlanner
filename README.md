@@ -21,7 +21,7 @@
 			* Things to Do
 			* Itenerary
 			* Things to potentially get done (Wish List)
-	- User can see their current trips and past trips they have gone on
+	- User can see their current trips,past trips and groups they are currenty apart of
 	- User can see most asked questions and and see answer (FAQ Form)
 
 ## STRETCH-GOALS
@@ -49,22 +49,33 @@ const userSchema = new mongoose.Schema({
 })
 
 const groupSchema = new mongoose.Schema({
-	creator: {type: String},
+	creator: mongoose.schema.Types.ObjectId
+	ref: user,
 	moderators: {[object]} //These are designated by the creator that are allowed to update certain info others arent
 	fellowTravellers: {[object]} //These are everyone else going on the trip that aren't mods. They can access all the same information but cannot make updates. They can only add 'suggestions' that can be be 'approved' by a mod to add to the trip
 })
 
 const tripSchema = new mongoose.Schema({
-	destination: {type: String}, -- //Where you are going
+	destination: {type: String}, //Where you are going
 	length: {String}, //Total length of trip
 	cost: {type: Number}, //cost breakdown of trip - basically a calculator that automatically adds costs you can input into things on the list
 })
 
-const profileSchema = new mongoose.Schema({
-	fullName: {type: String },
-	username: {type: String},
-	email: {type: String},
+const attricationsSchema = new mongoose.Schema({//specific attractions at set destination. ie, going to a museum
+	name: {type: String},
+	location: {type: String},
+	cost: {type: Number},
+	notes: {type: String}
 })
+
+const tasksSchema = new mongoose.Schema({//specific tasks that need to be completed but arent a 'thing to do', ie. booking your hotel
+	name: {type: String},
+	location: {type: String},
+	time-frame: 
+	notes: {type: String}
+
+})
+
 ```
 
 
