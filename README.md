@@ -30,11 +30,15 @@
 			* Ideas and suggestions from group member.
 				* This is an area where the group can congregate to share potential ideas and suggestions to get other users inputs and possibly add it to their lists
 	- User can see their current trips, past trips, and groups they are currenty apart of
+
+## Nice to haves 
+
 	- User can see most asked questions and and see answer (FAQ Form)
 	- Trip Advisor/Points of Interest API
 		- User will be to see recommendations/helpful tips based on destination from actual people that are then added into a suggestions area for the group to see.
 
 ## STRETCH-GOALS
+
 	- Subsections can be added to further breakdown 'legs' of the trip (more lists to add)
 		- Example - A trip to Japan can be broken down into legs containing subsections that contain info for a trip to Tokyo or Osaka
 	- A cost breakdown will be determined based on events added to a completed list
