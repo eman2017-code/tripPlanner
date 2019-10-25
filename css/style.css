@@ -1,0 +1,36 @@
+body {
+	font-family: 'Karla', sans-serif;
+	background-image: url('../images/luke-chesser-pJadQetzTkI-unsplash.jpg');
+}
+
+h1 {
+	text-align: center;
+	color: #F2F2F2;
+	background-color: #267373;
+	opacity: 0.8;
+}
+
+nav {
+	text-align: center;
+	padding: 3%;
+}
+
+nav a{
+	margin: 3%;
+	transition: 1s;
+	color: #F2F2F2;
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 780px) {
+	nav a{
+		display: block;
+		margin: 10%;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	nav a {
+		margin: 20%;
+	}
+}
