@@ -59,6 +59,12 @@ const tripSchema = new mongoose.Schema({
 	length: {String}, //Total length of trip
 	cost: {type: Number}, //cost breakdown of trip - basically a calculator that automatically adds costs you can input into things on the list
 })
+
+const profileSchema = new mongoose.Schema({
+	fullName: {type: String },
+	username: {type: String},
+	email: {type: String},
+})
 ```
 
 
