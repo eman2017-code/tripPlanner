@@ -9,11 +9,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-	res.render('users/new.ejs')
+	res.render('users/index.ejs')
 })
 
 //registration route
 router.post('/', async(req, res, next) => {
+	//finding iif username already exists
 	const username = req.body.username;
 	console.log(username)
 	try {
@@ -22,10 +23,12 @@ router.post('/', async(req, res, next) => {
 		})
 		console.log('this is what is found when the user inputs a username')
 		console.log(user);
+		//if username does not exist do the following
 		if(user !== null){
 			console.log('username is taken');
-			res.redirect('/users/new')
+			res.redirect('/users')
 		} else{
+			// users input 
 			const pw = req.body.password
 			const hashedPw = bcrypt.hashSync(pw, bcrypt.genSaltSync(10));
 			console.log(hashedPw);
