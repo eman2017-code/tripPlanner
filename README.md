@@ -13,7 +13,6 @@
 			1. Username
 			2. Password
 	- They will be brought into the landing page where all the main sections of the website are shown
-
 	- User can create a trip
 	- User can add other people to the group
 	- Original creator of group will be able to delegate moderators
@@ -28,7 +27,6 @@
 	- Subsections can be added to further breakdown 'legs' of the trip 
 		- Example - A trip to Japan can be broken down into legs containing subsections that contain info for a trip to Tokyo or Osaka
 	- A cost breakdown will be determined based on events added to a completed list
-
 
 ### WIREFRAMES:
 1. https://wireframe.cc/nKojLg
