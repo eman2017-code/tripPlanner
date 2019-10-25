@@ -20,14 +20,16 @@
 		* User and all the other members of the group will be able to add to the list
 			* Things to Do
 			* Itenerary
-			* Things to potentially get done 
+			* Things to potentially get done (Wish List)
 	- User can see their current trips and past trips they have gone on
 	- User can see most asked questions and and see answer (FAQ Form)
 
 ## STRETCH-GOALS
-	- Subsections can be added to further breakdown 'legs' of the trip 
+	- Subsections can be added to further breakdown 'legs' of the trip (more lists to add)
 		- Example - A trip to Japan can be broken down into legs containing subsections that contain info for a trip to Tokyo or Osaka
 	- Yelp API
+	- Location API 
+		- Be able to see live footage of places user and group is thinking about visiting
 	- A cost breakdown will be determined based on events added to a completed list
 
 ### WIREFRAMES:
