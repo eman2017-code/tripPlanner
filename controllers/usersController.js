@@ -9,13 +9,14 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-	res.render('users/index.ejs')
+	res.render('users/register.ejs')
 })
 
 //registration route
 router.post('/', async(req, res, next) => {
 	//finding iif username already exists
 	const username = req.body.username;
+	console.log('this is username input from form');
 	console.log(username)
 	try {
 		const user = await User.findOne({
@@ -40,7 +41,7 @@ router.post('/', async(req, res, next) => {
 			console.log(createdUser)
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			res.redirect('/')
+			res.redirect('/users')
 		}
 	} catch(err){
 		next(err)
