@@ -17,8 +17,8 @@
 		* User can add other people to the group
 		 * This can be done by finding a user by their username(or unique object ID) and adding them to the array that contains just your group members
 		* User who created the group will be a moderator
-		 *Additional users can be made moderators if desired
-		* User can select destination for group
+		 *Additional users can be made moderators if desired by original moderator
+		* User will select destination for group
 		* User and all the other members of the group will be able to add to the list
 			* Things to Do
 				*Tasks and Attractions that need to be completed so they can be eventually added to the intinerary
@@ -26,7 +26,7 @@
 				* A completed list of tasks and attractions that are added to the trip interaray. Basically a completed list
 			* Ideas and suggestions from group member.
 				* This is an area where the group can congregate to share potential ideas and suggestions to get other users inputs and possibly add it to their lists
-	- User can see their current trips,past trips and groups they are currenty apart of
+	- User can see their current trips, past trips, and groups they are currenty apart of
 	- User can see most asked questions and and see answer (FAQ Form)
 	- Trip Advisor/Points of Interest API
 		- User will be to see recommendations/helpful tips based on destination from actual people that are then added into a suggestions area for the group to see.
