@@ -15,12 +15,14 @@
 	- They will be brought into the landing page where all the main sections of the website are shown
 	- User can create a trip
 		* User can add other people to the group
-		* User who created the group will be the moderator
+		 * This can be done by finding a user by their username(or unique object ID) and adding them to the array that contains just your group members
+		* User who created the group will be a moderator
+		 *Additional users can be made moderators if desired
 		* User can select destination for group
 		* User and all the other members of the group will be able to add to the list
 			* Things to Do
 			* Itenerary
-			* Things to potentially get done (Wish List)
+			* Things to potentially get done (Wish List) etc.
 	- User can see their current trips,past trips and groups they are currenty apart of
 	- User can see most asked questions and and see answer (FAQ Form)
 	- Trip Advisor/Points of Interest API
