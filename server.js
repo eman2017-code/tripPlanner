@@ -7,6 +7,9 @@ require('./db/db');
 const userController = require('./controllers/users');
 app.use('/', userController);
 
+// middleware
+app.use(express.static('public'));
+
 
 
 
