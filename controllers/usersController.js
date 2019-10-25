@@ -8,13 +8,17 @@ router.get('/', (req, res) => {
 	res.render('index.ejs')
 });
 
+//rendering new registration page
 router.get('/new', (req, res) => {
 	res.render('users/register.ejs')
 })
 
+router.get('/login', (req, res) => {
+	res.render('users/login.ejs')
+})
 //registration route
 router.post('/', async(req, res, next) => {
-	//finding iif username already exists
+	//finding if username already exists
 	const username = req.body.username;
 	console.log('this is username input from form');
 	console.log(username)
