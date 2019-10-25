@@ -16,7 +16,7 @@ router.get('/new', (req, res) => {
 router.get('/login', (req, res) => {
 	res.render('users/login.ejs')
 })
-//loogin route
+//login route
 router.post('/login', async(req, res, next) => {
 	try {//this is findini a user object that matches thhe input username on th login form
 		const foundUsers = await User.find({
@@ -31,7 +31,7 @@ router.post('/login', async(req, res, next) => {
 			if(bcrypt.compareSync(pw, foundUsers[0].password)){
 				req.session.loggedIn = true;
 				req.session.username = foundUsers[0].username
-				res.redirect('/users')
+				res.render('users/homePage.ejs')
 			} else {
 				console.log('invalid password');
 				res.redirect('/users/login')
