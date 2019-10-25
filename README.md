@@ -23,11 +23,12 @@
 			* Things to potentially get done (Wish List)
 	- User can see their current trips,past trips and groups they are currenty apart of
 	- User can see most asked questions and and see answer (FAQ Form)
+	- Trip Advisor/Points of Interest API
+		- User will be to see recommendations/helpful tips based on destination from actual people
 
 ## STRETCH-GOALS
 	- Subsections can be added to further breakdown 'legs' of the trip (more lists to add)
 		- Example - A trip to Japan can be broken down into legs containing subsections that contain info for a trip to Tokyo or Osaka
-	- Yelp API
 	- Location API 
 		- Be able to see live footage of places user and group is thinking about visiting
 	- A cost breakdown will be determined based on events added to a completed list
