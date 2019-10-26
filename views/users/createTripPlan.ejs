@@ -6,14 +6,16 @@
 <body>
 
 	<h1>Create Trip - Plan Trip</h1>
-
-	Destination: <input type="text" name="place"/> <br>    
-	Destination Length (Days): <input type="number" name="destinationLength"/> <br>   
-	Number of People: <input type="number" name="people"/> <br>
-	Dates: <input type="date" name="date"/>
-	<br>
-	<br>
-	Start Your Trip: <input type="submit" name="submit">
+	<form action="/createTrip" method="POST">
+		Destination: <input type="text" name="place"/> <br>    
+		Destination Length (Days): <input type="number" name="destinationLength"/> <br>   
+		Number of People: <input type="number" name="people"/> <br>
+		Leaving: <input type="date" name="date"/> <br>
+		Returning: <input type="date" name="date"/>
+		<br>
+		<br>
+		<input type="submit" value="Create Trip">
+	</form>
 
 </body>
 </html>
