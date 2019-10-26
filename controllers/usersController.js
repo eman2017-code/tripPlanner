@@ -16,6 +16,7 @@ router.get('/new', (req, res) => {
 router.get('/login', (req, res) => {
 	res.render('users/login.ejs')
 })
+
 //login route
 router.post('/login', async(req, res, next) => {
 	try {//this is findini a user object that matches thhe input username on th login form
@@ -23,7 +24,7 @@ router.post('/login', async(req, res, next) => {
 			username: req.body.username
 		})//if no user is found with that username direct to login page
 		if(foundUsers.length === 0){
-			console.log('username does not exist')
+			// console.log('username does not exist')
 			res.redirect('/users/login')
 		} else {
 			const pw = req.body.password
@@ -33,7 +34,7 @@ router.post('/login', async(req, res, next) => {
 				req.session.username = foundUsers[0].username
 				res.render('users/homePage.ejs')
 			} else {
-				console.log('invalid password');
+				// console.log('invalid password');
 				res.redirect('/users/login')
 			}
 
@@ -42,18 +43,19 @@ router.post('/login', async(req, res, next) => {
 		next(err)
 	}
 })
+
 //registration route
 router.post('/', async(req, res, next) => {
 	//finding if username already exists
 	const username = req.body.username;
-	console.log('this is username input from form');
-	console.log(username)
+	// console.log('this is username input from form');
+	// console.log(username)
 	try {
 		const user = await User.findOne({
 			username: username
 		})
-		console.log('this is what is found when the user inputs a username')
-		console.log(user);
+		// console.log('this is what is found when the user inputs a username')
+		// console.log(user);
 		//if username does not exist do the following
 		if(user !== null){
 			console.log('username is taken');
@@ -67,17 +69,19 @@ router.post('/', async(req, res, next) => {
 				username: username,
 				password: hashedPw
 			})
-			console.log('this is our created user in the registration POST route')
-			console.log(createdUser)
+			// console.log('this is our created user in the registration POST route')
+			// console.log(createdUser)
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			res.redirect('/users')
+			// res.redirect('/users')
+			res.render('users/homePage.ejs')
 		}
 	} catch(err){
 		next(err)
 	}
 });
 
+// logout route
 router.get('/logout', async(req, res, next) => {
 	try {
 		await req.session.destroy();
@@ -87,6 +91,20 @@ router.get('/logout', async(req, res, next) => {
 		next(err)
 	}
 })
+
+// createTrip route
+// router.get('/createTrip', async (req, res, next) => {
+// 	try {
+// 		const  = await 
+		
+// 	}
+// 	catch(err) {
+// 		next(err)
+// 	}
+// })
+
+
+
 
 
 
