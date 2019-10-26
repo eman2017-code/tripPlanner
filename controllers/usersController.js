@@ -11,15 +11,26 @@ router.get('/', (req, res) => {
 //rendering new registration page
 router.get('/new', (req, res) => {
 	res.render('users/register.ejs')
-})
+});
 
+// rendering login page
 router.get('/login', (req, res) => {
 	res.render('users/login.ejs')
+});
+
+// rendering create trip page
+router.get('/createTrip', (req, res) => {
+	res.render('users/createTrip.ejs')
+})
+
+// rendering home page
+router.get('/homePage', (req, res) => {
+	res.render('homePage.ejs')
 })
 
 //login route
 router.post('/login', async(req, res, next) => {
-	try {//this is findini a user object that matches thhe input username on th login form
+	try {//this is findini a user object that matches the input username on th login form
 		const foundUsers = await User.find({
 			username: req.body.username
 		})//if no user is found with that username direct to login page
@@ -28,16 +39,16 @@ router.post('/login', async(req, res, next) => {
 			res.redirect('/users/login')
 		} else {
 			const pw = req.body.password
-			console.log(foundUsers[0]);
+			// if the password that they entered is the correct
 			if(bcrypt.compareSync(pw, foundUsers[0].password)){
+				// they are not logged in
 				req.session.loggedIn = true;
 				req.session.username = foundUsers[0].username
-				res.render('users/homePage.ejs')
+				// take them to the home page
+				res.redirect('/homePage')
 			} else {
-				// console.log('invalid password');
 				res.redirect('/users/login')
 			}
-
 		}
 	} catch(err){
 		next(err)
@@ -48,14 +59,10 @@ router.post('/login', async(req, res, next) => {
 router.post('/', async(req, res, next) => {
 	//finding if username already exists
 	const username = req.body.username;
-	// console.log('this is username input from form');
-	// console.log(username)
 	try {
 		const user = await User.findOne({
 			username: username
 		})
-		// console.log('this is what is found when the user inputs a username')
-		// console.log(user);
 		//if username does not exist do the following
 		if(user !== null){
 			console.log('username is taken');
@@ -64,16 +71,13 @@ router.post('/', async(req, res, next) => {
 			// users input 
 			const pw = req.body.password
 			const hashedPw = bcrypt.hashSync(pw, bcrypt.genSaltSync(10));
-			console.log(hashedPw);
+			// console.log(hashedPw);
 			const createdUser = await User.create({
 				username: username,
 				password: hashedPw
 			})
-			// console.log('this is our created user in the registration POST route')
-			// console.log(createdUser)
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			// res.redirect('/users')
 			res.render('users/homePage.ejs');
 		}
 	} catch(err){
@@ -86,16 +90,28 @@ router.get('/logout', async(req, res, next) => {
 	try {
 		await req.session.destroy();
 		res.redirect('/users')
-		console.log('ths is the logout working');
 	} catch(err){
 		next(err)
 	}
 })
 
-// //create page route
-// router.get('/createPage', (req, res) => {
-// 	res.render('users/createTrip.ejs')
-// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
