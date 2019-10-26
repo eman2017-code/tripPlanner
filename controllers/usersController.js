@@ -74,7 +74,7 @@ router.post('/', async(req, res, next) => {
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
 			// res.redirect('/users')
-			res.render('users/homePage.ejs')
+			res.render('users/homePage.ejs');
 		}
 	} catch(err){
 		next(err)
@@ -92,15 +92,9 @@ router.get('/logout', async(req, res, next) => {
 	}
 })
 
-// createTrip route
-// router.get('/createTrip', async (req, res, next) => {
-// 	try {
-// 		const  = await 
-		
-// 	}
-// 	catch(err) {
-// 		next(err)
-// 	}
+// //create page route
+// router.get('/createPage', (req, res) => {
+// 	res.render('users/createTrip.ejs')
 // })
 
 
