@@ -65,20 +65,20 @@ router.post('/', async(req, res, next) => {
 		})
 		//if username does not exist do the following
 		if(user !== null){
-			console.log('username is taken');
+			// console.log('username is taken');
 			res.redirect('/users')
 		} else{
 			// users input 
 			const pw = req.body.password
 			const hashedPw = bcrypt.hashSync(pw, bcrypt.genSaltSync(10));
-			// console.log(hashedPw);
 			const createdUser = await User.create({
 				username: username,
 				password: hashedPw
 			})
+			// they are now logged in
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			res.render('users/homePage.ejs');
+			res.redirect('/users/homePage');
 		}
 	} catch(err){
 		next(err)
