@@ -45,7 +45,7 @@ router.post('/login', async(req, res, next) => {
 				req.session.loggedIn = true;
 				req.session.username = foundUsers[0].username
 				// take them to the home page
-				res.redirect('/homePage')
+				res.redirect('/users/homePage')
 			} else {
 				res.redirect('/users/login')
 			}
