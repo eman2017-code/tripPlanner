@@ -5,15 +5,15 @@ const tripSchema = new mongoose.Schema({
 	creator: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
-	}]
+	}],
 	moderators: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
-	}]
+	}],
 	members: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
-	}]
+	}],
 	startDate: Date,
 	endDate: Date,
 	title: String,
@@ -22,10 +22,12 @@ const tripSchema = new mongoose.Schema({
 	//the follow ar arrays of object Id's from the tripitem schema
 	plannedItems: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Tripitem'.
+		ref: 'Tripitem',
+	}],
 	itemsToPlan: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Tripitem'
+		ref: 'Tripitem',
+	}],
 	suggestedItems: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Tripitem'

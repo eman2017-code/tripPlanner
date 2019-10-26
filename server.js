@@ -24,6 +24,8 @@ app.use(session({
 const userController = require('./controllers/usersController.js');
 app.use('/users', userController);
 
+const tripController = require('./controllers/tripsController.js')
+app.use('/trips', tripController)
 
 app.listen(PORT, () => {
 	console.log('Server listening on port ' + PORT);
