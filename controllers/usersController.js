@@ -25,7 +25,7 @@ router.get('/createTrip', (req, res) => {
 
 // rendering home page
 router.get('/homePage', (req, res) => {
-	res.render('homePage.ejs')
+	res.render('users/homePage.ejs')
 })
 
 //login route
