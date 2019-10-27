@@ -2,21 +2,28 @@
 <html>
 <head>
 	<title>User Register Page</title>
+	<link rel="stylesheet" type="text/css" href="/css/landingPage.css">
+
 </head>
 <body>
 	<a href="/users">Home</a>
 	<a href="/users/login">Login</a>
-	<h1>User Register Page</h1>
 
-	<form action="/users" method="POST">
-		<label>Email</label>
-		<input type="email" name="email">
-		<label>Username</label>
-		<input type="text" name="username">
-		<label>Password</label>
-		<input type="text" name="password">
-		<button type="submit">Login</button>
-	</form>
+	<div class="signIn">
+		<h1>Register</h1>
+		
+		<form action="/users" method="POST">
+			<label>Enter Email</label>
+			<input type="email" name="email">
+
+			<label>Enter Username</label>
+			<input type="text" name="username">
+
+			<label>Enter Password</label>
+			<input type="password" name="password">
+			<button class="btn" type="submit">Register</button>
+		</form>
+	</div>
 
 </body>
 </html>

@@ -1,10 +1,6 @@
-* { 
-	box-sizing: border-box; 
-}
-
 body { 
-  background-color: #267373;
-  color: #f2F2F2;
+/*  background-color: #267373;
+  color: #f2F2F2;*/
 }
 
 h1 {
@@ -36,8 +32,20 @@ header {
 .column {
 	flex: 1;
 	border: 1px solid gray;
-	margin: 0 5% 0 5%;
+	margin: 2%;
 	padding: 10px;
+}
+
+.addItem {
+	display: block;
+	/*margin: 5%;*/
+}
+
+.members {
+	background-color: yellow;
+	height: 400px;
+	width: 30%;
+	/*display: inline-block;*/
 }
 
 @media screen and (max-width: 980px) {

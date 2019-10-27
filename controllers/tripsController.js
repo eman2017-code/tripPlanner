@@ -14,13 +14,23 @@ router.get('/editGroup', (req, res) => {
 	res.render('trips/editGroup.ejs')
 });
 
+// createTripHomePage route
+router.get('/createTripHomePage', (req, res) => {
+	res.render('trips/createTripHomePage.ejs')
+})
+
 // post route
+
+// user will enter in their basic information for the trip
+// user will put in the names of the people who are going to be going on the trip with them
+// if checkbox is clicked, the person whose name is next to it is not a moderator
+// the user who has created the trip is also a moderator
+
 router.post('/', (req, res) => {
-	// when user hits create trip
-	// the the data that user entered into form will be stored in database
 	console.log(req.body);
-	res.redirect('/trips/createGroup');
-});
+	res.redirect('trips/createTripHomePage');
+})
+
 
 
 

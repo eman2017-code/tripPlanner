@@ -1,25 +1,123 @@
+body {
+	background-image: url('../images/luke-chesser-PHtp0cDBJSM-unsplash.jpg');
+	background-size: cover;
+	font-family: 'Karla', sans-serif;
+}
+
 h1 {
+	color: #000;
 	text-align: center;
 }
 
-body {
-	background-color: #D7F8FF;
+img {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	width: 50%;
+	height: auto;
 }
 
-div {
-	background-color: #38ECFF;
-	margin: 5%;
-	padding: 3%;
-	width: 25%;
+.container {
+	width: 50%;
+	margin: 30px auto;
 }
 
 div a{
 	color: #000;
+	font-size: 25px;
 	text-decoration: none;
-	text-align: center;
+	display: inline-block;
 }
 
-.container {
-	display: flex;
-	justify-content: space-around;
+div a::after {
+ 	content: '';
+ 	display: inline-block;
+ 	width: 0;
+ 	height: 2px;
+ 	transition: width .3s;
+ 	background-color: #000;
+ }
+
+div a:hover::after {
+ 	width: 100%;
+ 	transition: width .3s;
 }
+
+.col {
+	display: inline-block;
+	margin-left: 28%;
+	margin-top: 10%;
+}
+
+.signIn {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 3em;
+}
+
+h2 {
+	font-weight: lighter;
+	color: #616161;
+	font-size: 50px;
+	text-align: center;
+	margin-top: 0px;
+}
+
+input {
+	display: block;
+	width: 320px;
+	height: 50px;
+	background-color: rgba(0,0,0,0.3);
+	outline: none;
+	border: 1px solid rgba(0,0,0,0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 5px;
+}
+
+button {
+	width: 332px;
+	height: 50px;
+	font-size: 16px;
+	background-color: #000;
+	font-weight: lighter;
+	color: #F2F2F2;
+	border: 0px;
+	border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 810px) {
+	img {
+		width: 100%;
+	}
+	.col {
+		background-color: #F2F2F2;
+		width: 100%;
+		margin-top: 5%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

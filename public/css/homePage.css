@@ -1,12 +1,11 @@
 body {
 	font-family: 'Karla', sans-serif;
-	background-image: url('../images/luke-chesser-pJadQetzTkI-unsplash.jpg');
+	background-image: url('../images/luke-chesser-PHtp0cDBJSM-unsplash.jpg');
 }
 
 h1 {
 	text-align: center;
-	color: #F2F2F2;
-	background-color: #267373;
+	/*background-color: #267373;*/
 	opacity: 0.8;
 }
 
@@ -18,14 +17,55 @@ nav {
 nav a{
 	margin: 3%;
 	transition: 1s;
-	color: #F2F2F2;
 	text-decoration: none;
+	font-size: 20px;
+	color: #000;
 }
 
-@media only screen and (max-width: 780px) {
+.line {
+      position: relative;
+      top: 50%;
+      width: 16em;
+      margin: 0 auto;
+      border-right: 2px solid rgba(255, 255, 255, 0.75);
+      font-size: 180%;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;transform: translateY(-50%);
+}
+
+.anim-typewriter {
+      animation: typewriter 4s steps(40) 1s 1 normal both,
+      blinkTextCursor 500ms steps(40) infinite normal;
+}
+
+.animationText {
+	margin-top: 5%;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 16em;
+    }
+}
+
+@keyframes blinkTextCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+@media only screen and (max-width: 750px) {
 	nav a{
 		display: block;
 		margin: 10%;
+		font-size: 15px;	
 	}
 }
 
