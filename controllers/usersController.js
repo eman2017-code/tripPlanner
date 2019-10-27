@@ -20,7 +20,7 @@ router.get('/login', (req, res) => {
 
 // rendering create trip page
 router.get('/createTrip', (req, res) => {
-	res.render('users/createTripPlan.ejs')
+	res.render('trips/createTripPlan.ejs')
 })
 
 // rendering home page

@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const tripSchema = new mongoose.Schema({
-	//the follow are arrays of object Id's for each user froom th user schema
-	creator: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
-	}],
+	//the following are arrays of object Id's for each user froom the user schema
 	moderators: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
@@ -19,7 +15,7 @@ const tripSchema = new mongoose.Schema({
 	title: String,
 	destination: String,
 	description: String,
-	//the follow ar arrays of object Id's from the tripitem schema
+	//the follow are arrays of object Id's from the tripitem schema
 	plannedItems: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Tripitem',
