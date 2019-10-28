@@ -33,6 +33,9 @@ router.post('/', async (req, res, next) => {
 
 	const createdTrip = Trip.create(req.body)
 	createdTrip.destination = req.body.place
+	createdTrip.moderators = req.body.isModerator
+	createdTrip.member = req.body.member
+	console.log('This is the createdTrip schema');
 	console.log(createdTrip);
 	// console.log('This is the destination path within the Trip schema');
 	// console.log(Trip.path('desination'));
