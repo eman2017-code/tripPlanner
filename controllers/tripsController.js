@@ -19,16 +19,11 @@ router.get('/createTrip', (req, res) => {
 	res.render('trips/createTripPlan.ejs')
 });
 
-// // createGroup route
-// router.get('/createGroup', (req, res) => {
-// 	res.render('trips/createGroup.ejs');
+// // post route
+// router.post('/', (req, res) => {
+// 	console.log(req.body, '<--- this should be the contents of the form');
+// 	// res.redirect('trips/createGroup');
 // });
-
-// post route
-router.post('/', (req, res) => {
-	console.log(req.body, '<--- this should be the contents of the form');
-	res.redirect('trips/createGroup');
-});
 
 // user will enter in their basic information for the trip
 // user will put in the names of the people who are going to be going on the trip with them
