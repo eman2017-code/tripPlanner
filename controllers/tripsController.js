@@ -15,10 +15,35 @@ router.get('/createTripPlan', (req, res) => {
 	res.render('trips/createTripPlan.ejs')
 });
 
-// createTrip main page
-router.get('/createTripHomePage', (req, res) => {
-	res.render('trips/createTripHomePage.ejs')
+// // createTrip main page
+// router.get('/createTripHomePage/:id', async (req, res, next) => {
+// 	const foundTrip = await Trip.findById(req.params.id, (err, foundTrip) => {
+// 		if(err){
+// 			res.send(err)
+// 		} else {
+// 			res.render('/trips/createTripHomePage.ejs')
+// 			createdTrip.destination
+// 		}
+// 	})
+// 	// get trip from db
+// })
+
+router.get('/createTripHomePage/:id', async (req, res, next) => {
+	try {
+		const foundTrip = await Trip.findById(req.params.id);
+		res.render('trips/createTripHomePage.ejs', {
+			savedTrip: foundTrip
+		})
+	}
+	catch(err) {
+		next(err)
+	}
 })
+
+
+
+
+
 
 //create group route
 router.get('/createGroup', (req, res) => {
@@ -35,27 +60,29 @@ router.post('/', async (req, res, next) => {
 		const createdTrip =  await Trip.create(req.body);
 
 		// get the destination
-		const destinationOfTrip = createdTrip.destination = req.body.place
-		console.log(destinationOfTrip, '<--- this is the destination of the trip');
+		createdTrip.destination = req.body.place
+		console.log(createdTrip.destination, '<--- this is the destination of the trip');
+		//created
 
 		// get the members name
-		const memberName = createdTrip.member = req.body.member;
-		console.log(memberName, '<--- this is the member name');
+		createdTrip.member = req.body.member;
+		console.log(createdTrip.member, '<--- this is the member name');
 
 		// get the start date that the user entered
-		const createdStartDate = createdTrip.startDate = req.body.startDate;
-		console.log(createdStartDate, '<--- this is the created start Date');
+		createdTrip.startDate = req.body.startDate;
+		console.log(createdTrip.startDate, '<--- this is the created start Date');
 
 		// get the end date that the user entered
-		const createdEndDate = createdTrip.endDate = req.body.returnDate;
-		console.log(createdEndDate, '<--- this is the created End date');
+		createdTrip.endDate = req.body.returnDate;
+		console.log(createdTrip.endDate, '<--- this is the created End date');
 
 		// obtain the description that the user entered
-		const createdDescription = createdTrip.description = req.body.description;
-		console.log(createdDescription, '<--- this is the created description');
+		createdTrip.description = req.body.description;
+		console.log(createdTrip.description, '<--- this is the created description');
 
-		await createdTrip.save();
-		res.redirect('trips/createTripHomePage');
+		const savedTrip = await createdTrip.save();
+		//savedTrip._id  = "ab13e3bef33"
+		res.redirect('trips/createTripHomePage/' + savedTrip._id);
 	}
 	catch(err) {
 		next(err)
