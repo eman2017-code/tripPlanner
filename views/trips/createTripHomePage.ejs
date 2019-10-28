@@ -27,7 +27,12 @@
 			each member will be a link for user to edit them
 				i.e. == make them a moderator -->
 		<!-- </li> -->
-		<button>Add Member</button>
+		<li>
+			<% for (let i = 0; i < group.length; i++) { -%>
+				<%= console.log(group[i] + ' <-- the members that the user added'); %>
+			<% } -%>
+		</li>
+		<!-- <button>Add Member</button> -->
 	</div>
 	
 	<div class="column">

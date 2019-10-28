@@ -18,10 +18,15 @@ router.get('/login', (req, res) => {
 	res.render('users/login.ejs')
 });
 
-// rendering create trip page
-router.get('/createTrip', (req, res) => {
-	res.render('trips/createTripPlan.ejs')
-})
+// // rendering create trip page
+// router.get('/createTrip', (req, res) => {
+// 	res.render('trips/createTripPlan.ejs')
+// })
+
+// // createGroup route
+// router.get('trips/createGroup', (req, res) => {
+// 	res.render('trips/createGroup.ejs');
+// });
 
 // rendering home page
 router.get('/homePage', (req, res) => {

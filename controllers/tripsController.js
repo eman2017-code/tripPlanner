@@ -14,29 +14,43 @@ router.get('/editGroup', (req, res) => {
 	res.render('trips/editGroup.ejs')
 });
 
-// createTripHomePage route
-router.get('/createTripHomePage', (req, res) => {
-	res.render('trips/createGroup.ejs')
+// rendering create trip page
+router.get('/createTrip', (req, res) => {
+	res.render('trips/createTripPlan.ejs')
 })
 
-// // new route
+// // createGroup route
 // router.get('/createGroup', (req, res) => {
-// 	res.render('trips/createGroup.ejs')
-// })
-
-
+// 	res.render('trips/createGroup.ejs');
+// });
 
 // post route
+router.post('/', (req, res) => {
+	console.log(req.body, '<--- this should be the contents of the form');
+	res.redirect('/createGroup');
+});
 
 // user will enter in their basic information for the trip
 // user will put in the names of the people who are going to be going on the trip with them
 // if checkbox is clicked, the person whose name is next to it is not a moderator
 // the user who has created the trip is also a moderator
 
-router.post('/', (req, res) => {
-	console.log(req.body);
-	res.redirect('trips/createTripHomePage');
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
