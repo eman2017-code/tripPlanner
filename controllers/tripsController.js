@@ -25,31 +25,32 @@ router.get('/createGroup', (req, res) => {
 	res.render('trips/createGroup.ejs')
 });
 
-// // post route
-// router.post('/', (req, res) => {
-// 	// console.log(req.body, '<--- this should be the contents of the form');
+// post route
 
-// 	// push the contents of req.body into the tripSchema's respective places
-// 	// console.log(req.body.place, ' this is the place');
-// 	// Trip.destination.push(req.body.place);
-// 	console.log('----------- This is the schema paths');
-// 	//populate path with the schema we are sending 
+// first we need to find get the destination from within the Trip
+	// we need to find the path that is within the schema
+router.post('/', async (req, res, next) => {
 
-// 	console.log(Trip.paths.destination.instance)
-// 	console.log('-----------');
-// 	// console.log(Trip, '<-- this is the console.log(from trip);');
+	const createdTrip = Trip.create(req.body)
+	createdTrip.destination = req.body.place
+	console.log(createdTrip);
+	// console.log('This is the destination path within the Trip schema');
+	// console.log(Trip.path('desination'));
+	// console.log('======== This is the the trip paths ');
+	// console.log(req.body);
 
-// 	// console.log(req.body.date, ' these are the dates');
-// 	// console.log(req.body.member, ' this is the member');
+	// // create (.create()) some trip 
+
+	// destination.push('Colorado')
+
+	// sometrip.destination = "colorado" // req.boy
+
+	// // .save()
+
+	// console.log(Trip.schema.paths.destination);
 
 
-// 	res.redirect('trips/createTripHomePage');
-// });
-
-// user will enter in their basic information for the trip
-// user will put in the names of the people who are going to be going on the trip with them
-// if checkbox is clicked, the person whose name is next to it is not a moderator
-// the user who has created the trip is also a moderator
+})
 
 
 

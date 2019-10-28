@@ -10,11 +10,11 @@ const tripSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
 	}],
-	startDate: Date,
-	endDate: Date,
-	title: String,
-	destination: String,
-	description: String,
+	startDate: {type: String},
+	endDate: {type: Date},
+	title: {type: String},
+	destination: {type: String},
+	description: {type: String},
 	//the follow are arrays of object Id's from the tripitem schema
 	plannedItems: [{
 		type: mongoose.Schema.Types.ObjectId,
