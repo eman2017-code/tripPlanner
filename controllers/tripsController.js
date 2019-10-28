@@ -30,28 +30,36 @@ router.get('/createGroup', (req, res) => {
 // first we need to find get the destination from within the Trip
 	// we need to find the path that is within the schema
 router.post('/', async (req, res, next) => {
+	try {
+		// first we need to create a trip
+		const createdTrip =  await Trip.create(req.body);
 
-	const createdTrip = Trip.create(req.body)
-	createdTrip.destination = req.body.place
-	createdTrip.moderators = req.body.isModerator
-	createdTrip.member = req.body.member
-	console.log('This is the createdTrip schema');
-	console.log(createdTrip);
-	// console.log('This is the destination path within the Trip schema');
-	// console.log(Trip.path('desination'));
-	// console.log('======== This is the the trip paths ');
-	// console.log(req.body);
+		// get the destination
+		const destinationOfTrip = createdTrip.destination = req.body.place
+		console.log(destinationOfTrip, '<--- this is the destination of the trip');
 
-	// // create (.create()) some trip 
+		// get the members name
+		const memberName = createdTrip.member = req.body.member;
+		console.log(memberName, '<--- this is the member name');
 
-	// destination.push('Colorado')
+		// get the start date that the user entered
+		const createdStartDate = createdTrip.startDate = req.body.startDate;
+		console.log(createdStartDate, '<--- this is the created start Date');
 
-	// sometrip.destination = "colorado" // req.boy
+		// get the end date that the user entered
+		const createdEndDate = createdTrip.endDate = req.body.returnDate;
+		console.log(createdEndDate, '<--- this is the created End date');
 
-	// // .save()
+		// obtain the description that the user entered
+		const createdDescription = createdTrip.description = req.body.description;
+		console.log(createdDescription, '<--- this is the created description');
 
-	// console.log(Trip.schema.paths.destination);
-
+		await createdTrip.save();
+		res.redirect('trips/createTripHomePage');
+	}
+	catch(err) {
+		next(err)
+	}
 
 })
 

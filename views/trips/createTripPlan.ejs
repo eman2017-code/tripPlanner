@@ -9,17 +9,17 @@
 	<h1>Create Trip - Plan Trip</h1>
 	<form action="/trips" method="POST">
 		Destination: <input type="text" name="place"/> <br>    
-		Leaving: <input type="date" name="date"/> <br>
-		Returning: <input type="date" name="date"/>
+		Leaving: <input type="date" name="startDate"/> <br>
+		Returning: <input type="date" name="returnDate"/><br>
+		Description: <input type="text" name="description"><br>
 		<br>
 		<br>
 		<br>
 		<br>
 		<label>Name</label>
     	<input type="text" name="member">
-    	<label>Moderator</label>
-    	<input type="checkbox" name="isModerator">
-    	<!-- <input type="submit" value="Add Member">  -->
+    	<!-- <label>Moderator</label>
+    	<input type="checkbox" name="isModerator"> -->
 
 		<input type="submit" value="Start Trip Plan">
 	</form>
