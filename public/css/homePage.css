@@ -65,12 +65,13 @@ nav a{
 	nav a{
 		display: block;
 		margin: 10%;
-		font-size: 15px;	
+	  font-size: 15px;	
 	}
 }
 
 @media only screen and (max-width: 500px) {
 	nav a {
 		margin: 20%;
+    background-color: red;
 	}
 }

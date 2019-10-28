@@ -16,8 +16,15 @@ router.get('/editGroup', (req, res) => {
 
 // createTripHomePage route
 router.get('/createTripHomePage', (req, res) => {
-	res.render('trips/createTripHomePage.ejs')
+	res.render('trips/createGroup.ejs')
 })
+
+// // new route
+// router.get('/createGroup', (req, res) => {
+// 	res.render('trips/createGroup.ejs')
+// })
+
+
 
 // post route
 
