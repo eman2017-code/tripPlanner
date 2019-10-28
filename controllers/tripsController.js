@@ -17,7 +17,7 @@ router.get('/editGroup', (req, res) => {
 // rendering create trip page
 router.get('/createTrip', (req, res) => {
 	res.render('trips/createTripPlan.ejs')
-})
+});
 
 // // createGroup route
 // router.get('/createGroup', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/createTrip', (req, res) => {
 // post route
 router.post('/', (req, res) => {
 	console.log(req.body, '<--- this should be the contents of the form');
-	res.redirect('/createGroup');
+	res.redirect('trips/createGroup');
 });
 
 // user will enter in their basic information for the trip
