@@ -87,9 +87,18 @@ router.get('/createList', (req, res) => {
 });
 
 // post route for creating trips
-router.post('/items', (req, res) => {
-	console.log(req.body, '<-- this is the contets of the form');
-});
+// router.post('/items', async (req, res, next) => {
+// 	try {
+// 		const createdItem = await Trip.create(req.body);
+// 		createdItem.description = req.body.edit;
+		
+// 		await createdItem.save();
+// 		res.redirect('/trips/createTripHomePage') 
+// 	}
+// 	catch(err) {
+// 		next(err)
+// 	}
+// })
 
 
 
