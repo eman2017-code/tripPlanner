@@ -59,6 +59,10 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+// new route
+router.get('/createList', (req, res) => {
+	res.render('trips/newList.ejs');
+});
 
 
 
