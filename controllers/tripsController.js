@@ -4,7 +4,6 @@ const Trip = require('../models/trip.js');
 const User = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 
-
 // //edit group route
 // router.get('/editGroup', (req, res) => {
 // 	res.render('trips/editGroup.ejs')
@@ -59,7 +58,7 @@ router.post('/', async (req, res, next) => {
 		next(err)
 	}
 });
-//
+
 router.get('/savedTrips', async(req, res, next) => {
 	try {
 		const foundTrips = await Trip.find({})
@@ -70,6 +69,7 @@ router.get('/savedTrips', async(req, res, next) => {
 		next(err)
 	}
 })
+
 //edit route
 router.get('/:id/tripEdit', async(req, res, next) => {
 	try {
@@ -81,6 +81,8 @@ router.get('/:id/tripEdit', async(req, res, next) => {
 		next(err)
 	}
 })
+
+// update route
 router.put('/:id', async(req, res, next) => {
 	try {
 		const updateTrip = await Trip.findById(req.params.id)
@@ -108,31 +110,12 @@ router.delete('/:id', (req, res) => {
             console.log('well that didnt work');
         } else {
             // console.log('this will work');
-            res.send('hi')
-            res.redirect('/trips');
+
+
+            res.redirect('/users/homePage');
+
         }
     })
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
