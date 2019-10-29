@@ -12,7 +12,11 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
 	extended: false
 }))
+<<<<<<< HEAD
 app.use(methodOverride('_method'))
+=======
+
+>>>>>>> crudList
 app.use(session({
 	secret: 'blah blah secret',
 	saveUninitialized: false, // GDPR

@@ -97,10 +97,22 @@ router.put('/:id', async(req, res, next) => {
 
 // new route
 router.get('/createList', (req, res) => {
-	res.render('trips/newList.ejs');
+    res.render('trips/newList.ejs');
 });
 
 //delete route
+router.delete('/:id', (req, res) => {
+    Trip.deleteOne({_id: req.params.id}, (err, result) => {
+        if(err){
+            // res.send(err)
+            console.log('well that didnt work');
+        } else {
+            // console.log('this will work');
+
+            res.redirect('/trips');
+        }
+    })
+})
 
 
 
