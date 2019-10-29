@@ -2,8 +2,9 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const bodyParser = require('body-parser')
-const session = require('express-session')
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const session = require('express-session');
 require('./db/db');
 
 // middleware
@@ -11,9 +12,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
 	extended: false
 }))
-
-
-
+app.use(methodOverride('_method'))
 app.use(session({
 	secret: 'blah blah secret',
 	saveUninitialized: false, // GDPR

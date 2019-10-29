@@ -21,6 +21,7 @@ router.get('/createTripHomePage/:id', async (req, res, next) => {
 		// find the actual trip
 		const foundTrip = await Trip.findById(req.params.id);
 		// render the page with the found Trip
+		console.log("\n here is foundTrip in GET /createTripHomePage/:id ", foundTrip);
 		res.render('trips/createTripHomePage.ejs', {
 			savedTrip: foundTrip
 		})
@@ -41,7 +42,7 @@ router.post('/', async (req, res, next) => {
 		// create a trip
 		const createdTrip =  await Trip.create(req.body);
 		// get the destination
-		createdTrip.destination = req.body.place
+		createdTrip.destination = req.body.destination;
 		// get the members name
 		createdTrip.member = req.body.member;
 		// get the start date 
@@ -73,32 +74,48 @@ router.get('/savedTrips', async(req, res, next) => {
 router.get('/:id/tripEdit', async(req, res, next) => {
 	try {
 		const foundTrip = await Trip.findById(req.params.id)
-		res.render('trips/tripEdit.ejs/', {
-			savedTrip: foundTrip
+		res.render('trips/tripEdit.ejs', {
+			trip: foundTrip
 		})
 	} catch(err){
 		next(err)
 	}
 })
-router.put('/trips/crateTripHomePage/:id', async(req, res, next) => {
+router.put('/:id', async(req, res, next) => {
 	try {
 		const updateTrip = await Trip.findById(req.params.id)
-		updateTrip.destination = req.body.place
+		updateTrip.destination = req.body.destination
 		updateTrip.startdate = req.body.startDate;
 		updateTrip.endDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
-		res.redirect('trips/createTripHomePage.ejs/' + updateTrip._id)
+		await updateTrip.save();
+		res.redirect('/trips/createTripHomePage/' + updateTrip._id)
 	} catch(err){
 		next(err)
 	}
 })
+
+// router.put('trips/:id', (req, res) => {
+// 	Trip.findByIdAndUpdate(
+// 		req.params.id, 
+// 		req.body, 
+// 		{new: true}, (err, updateTrip) => {
+// 		if(err) {
+// 			res.send(err)
+// 		} else {
+// 			res.redirect('trips/createTripHomePage/' + updateTrip._id);
+// 		}
+// 	})
+// })
 
 // new route
 router.get('/createList', (req, res) => {
 	res.render('trips/newList.ejs');
 });
 
-router.post('/')
+// router.put('/', (req, res) => {
+	
+// })
 
 
 
