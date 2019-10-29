@@ -9,15 +9,14 @@
 	<a href="/users/new">Register</a>
 	<a href="/users/logout">Logout</a>
 
-	<h1>Your Trip</h1>
-
-	<div class="wrapper">
-
 	<header>
 		<!-- this should be the name of the trip that the user entered -->
-		<h1><%=savedTrip.destination%></h1>
+		<h1><%=savedTrip.destination%> <%=savedTrip.startDate%> thru <%=savedTrip.endDate%></h1>
+
 
 	</header>
+
+	<div class="wrapper">
 		
 <section class="columns">
 

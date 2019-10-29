@@ -11,7 +11,7 @@ const tripSchema = new mongoose.Schema({
 		ref: 'User'
 	}],
 	startDate: {type: String},
-	endDate: {type: Date},
+	endDate: {type: String},
 	title: {type: String},
 	destination: {type: String},
 	description: {type: String},
