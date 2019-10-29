@@ -58,7 +58,7 @@ router.post('/', async (req, res, next) => {
 		next(err)
 	}
 });
-
+//
 router.get('/savedTrips', async(req, res, next) => {
 	try {
 		const foundTrips = await Trip.find({})
@@ -69,7 +69,7 @@ router.get('/savedTrips', async(req, res, next) => {
 		next(err)
 	}
 })
-
+//edit route
 router.get('/tripEdit/:id', async(req, res, next) => {
 	try {
 		const foundTrip = await Trip.findById(req.params.id)
@@ -80,6 +80,18 @@ router.get('/tripEdit/:id', async(req, res, next) => {
 		next(err)
 	}
 })
+// router.put('/createTripHomePage/:id', async(req, res, next) => {
+// 	try {
+// 		const updateTrip = await Trip.findById(req.params.id)
+// 		updateTrip.destination = req.body.place
+// 		updateTrip.startdate = req.body.startDate;
+// 		updateTrip.endDate = req.body.returnDate;
+// 		updateTrip.description = req.body.description;
+// 		res.redirect('trips/createTripHomePage.ejs/' + updateTrip._id)
+// 	} catch(err){
+// 		next(err)
+// 	}
+// })
 
 // new route
 router.get('/createList', (req, res) => {
