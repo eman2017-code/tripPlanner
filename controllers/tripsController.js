@@ -95,29 +95,12 @@ router.put('/:id', async(req, res, next) => {
 	}
 })
 
-// router.put('trips/:id', (req, res) => {
-// 	Trip.findByIdAndUpdate(
-// 		req.params.id, 
-// 		req.body, 
-// 		{new: true}, (err, updateTrip) => {
-// 		if(err) {
-// 			res.send(err)
-// 		} else {
-// 			res.redirect('trips/createTripHomePage/' + updateTrip._id);
-// 		}
-// 	})
-// })
-
 // new route
 router.get('/createList', (req, res) => {
 	res.render('trips/newList.ejs');
 });
 
-// router.put('/', (req, res) => {
-	
-// })
-
-
+//delete route
 
 
 
