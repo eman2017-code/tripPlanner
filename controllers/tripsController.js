@@ -64,6 +64,8 @@ router.get('/createList', (req, res) => {
 	res.render('trips/newList.ejs');
 });
 
+router.post('/')
+
 
 
 
