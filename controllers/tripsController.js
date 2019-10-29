@@ -38,7 +38,7 @@ router.get('/createGroup', (req, res) => {
 // post route
 router.post('/', async (req, res, next) => {
 	try {
-		// first we need to create a trip
+		// create a trip
 		const createdTrip =  await Trip.create(req.body);
 		// get the destination
 		createdTrip.destination = req.body.place
@@ -57,8 +57,7 @@ router.post('/', async (req, res, next) => {
 	catch(err) {
 		next(err)
 	}
-
-})
+});
 
 
 
