@@ -108,7 +108,7 @@ router.delete('/:id', (req, res) => {
             console.log('well that didnt work');
         } else {
             // console.log('this will work');
-
+            res.send('hi')
             res.redirect('/trips');
         }
     })
