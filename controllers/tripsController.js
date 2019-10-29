@@ -21,7 +21,7 @@ router.get('/createTripHomePage/:id', async (req, res, next) => {
 		// find the actual trip
 		const foundTrip = await Trip.findById(req.params.id);
 		// render the page with the found Trip
-		console.log("\n here is foundTrip in GET /createTripHomePage/:id ", foundTrip);
+		// console.log("\n here is foundTrip in GET /createTripHomePage/:id ", foundTrip);
 		res.render('trips/createTripHomePage.ejs', {
 			savedTrip: foundTrip
 		})
@@ -112,9 +112,7 @@ router.delete('/:id', (req, res) => {
             res.redirect('/trips');
         }
     })
-})
-
-
+});
 
 
 

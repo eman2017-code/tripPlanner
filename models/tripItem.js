@@ -10,5 +10,5 @@ const tripItemSchema = new mongoose.Schema({
 	dueDate: Date,
 })
 
-const Tripitem = mongoose.model('Tripitem', tripItemSchema)
-module.exports = Tripitem;
+const TripItem = mongoose.model('TripItem', tripItemSchema)
+module.exports = TripItem;
