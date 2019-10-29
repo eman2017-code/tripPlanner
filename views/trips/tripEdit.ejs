@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Trip Page</title>
+</head>
+<body>
+	<h1>Edit Your Trip!</h1>
+	<form action='' method='POST'>
+		<p>Destination:</p>
+		<input type="text" name="destination" placeholder="<%=savedTrip.destination%>">	
+		<button type='submit'>Submit</button>
+
+		<p>Departure:</p>
+		<input type="date" name="departure" placeholder="<%=savedTrip.startDate%>">	
+		<button type='submit'>Submit</button>
+		<p>Return:</p>
+		<input type="date" name="Return" placeholder="<%=savedTrip.endDate%>">	
+		<button type='submit'>Submit</button>
+		<p>Description:</p>
+		<input type="text" name="description" placeholder="<%=savedTrip.description%>">	
+		<button type='submit'>Submit</button>
+
+		<p>Add/Remove a group member by their username</p>
+		<!-- We will also implement being able to make certain members moderators from tis page -->
+		<input type="username" name="username" placeholder="insert username here">	
+		<button type='submit'>Submit</button>
+	</form>
+</body>
+</html>

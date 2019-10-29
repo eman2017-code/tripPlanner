@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
+const Trip = require('../models/trip.js')
 const bcrypt = require('bcryptjs');
 
 // index route
@@ -79,6 +80,44 @@ router.post('/', async(req, res, next) => {
 		next(err)
 	}
 });
+
+// router.get('/:id', (req, res) => {
+// 	User.findById(req.params.id, (err, foundUser) => {
+// 		if(err) {
+// 			res.send(err);
+// 		} else {
+// 			res.render('trips/tripIndex.ejs', {
+// 				user: foundUser
+// 			})
+// 		}
+// 	})
+// })
+//first grab userId that is creating the trip 
+//then get trip ID and push that iinto corresponding users trips array
+//this array will hold all of the object Id's of the trips for that user
+//this can then be used to display a page of all the logged in user's saved trips
+
+// // index route for tripIndex page
+// router.get('/tripIndex', (req, res) => {
+// 	res.render('trips/tripIndex.ejs')
+// });
+
+// first get the userId
+// get the tripId
+// push the tripId into the userId
+// router.get('/tripIndex', async(req, res, next) => {
+// 	const foundUser = await User.findById(req.params.id, (err, foundUser) => {
+// 		if(err) {
+// 			res.send(err)
+// 		} else {
+// 			// console.log(foundUser);
+// 			res.render('trips/tripIndex.ejs', {
+// 				user: foundUser
+// 			})
+// 		}
+// 	})
+// })
+
 
 // logout route
 router.get('/logout', async(req, res, next) => {

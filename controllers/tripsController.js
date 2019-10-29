@@ -70,6 +70,17 @@ router.get('/savedTrips', async(req, res, next) => {
 	}
 })
 
+router.get('/editTrip/:id', async(req, res, next) => {
+	try {
+		const foundTrip = await Trip.findById(req.params.id)
+		res.render('trips/tripEdit.ejs', {
+			savedTrip: foundTrip
+		})
+	} catch(err){
+		next(err)
+	}
+})
+
 
 
 
