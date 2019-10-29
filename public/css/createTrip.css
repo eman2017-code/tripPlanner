@@ -30,10 +30,10 @@ header {
 }
 
 .column {
-	flex: 1;
+	/*flex: 1;*/
 	border: 1px solid gray;
-	margin: 2%;
-	padding: 10px;
+	margin: 6%;
+	padding: 50px;
 }
 
 .addItem {
