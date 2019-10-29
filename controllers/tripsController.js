@@ -59,6 +59,17 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+router.get('/savedTrips', async(req, res, next) => {
+	try {
+		const foundTrips = await Trip.find({})
+		res.render('trips/tripIndex.ejs', {
+			foundTrips: foundTrips
+		})
+	} catch(err){
+		next(err)
+	}
+})
+
 
 
 
