@@ -12,8 +12,6 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }))
 
-
-
 app.use(session({
 	secret: 'blah blah secret',
 	saveUninitialized: false, // GDPR

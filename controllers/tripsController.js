@@ -86,7 +86,10 @@ router.get('/createList', (req, res) => {
 	res.render('trips/newList.ejs');
 });
 
-router.post('/')
+// post route for creating trips
+router.post('/items', (req, res) => {
+	console.log(req.body, '<-- this is the contets of the form');
+});
 
 
 
