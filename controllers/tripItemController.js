@@ -39,6 +39,20 @@ router.post('/createItem/:id', async (req, res, next) => {
 	}
 })
 
+// edit route
+// make a route for the user to edit an item on the list
+router.get('/:id/tripItemEdit', async (req, res, next) => {
+	try {
+		const foundItem = await TripItem.findById(req.params.id); 
+		res.render('trips/tripItemEdit.ejs', {
+			foundItem: foundItem
+		})
+	}
+	catch(err) {
+		next(err)
+	}
+})
+
 
 
 
