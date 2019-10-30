@@ -33,9 +33,7 @@
 	<div>
 		<div class="column">
 			<h6>TO DO</h6>
-
 			<!-- we need to loop through all of the items that were chosen from the to do list and display them here -->	
-
 			<ul>
 				<% for (let i = 0; i < savedTrip.itemsToPlan.length; i++) { -%>
 					<li><%=savedTrip.itemsToPlan[i].description%></li>
@@ -45,31 +43,23 @@
 		</div>
 	
 		<div class="column">
-			<h6>ITENERARY</h6>
-			
+			<h6>ITENERARY</h6>			
 			<!-- we need to loop through all of the items that were chosen from the itenerary list and display them here -->
-
 			<ul>
 				<% for (let i = 0; i < savedTrip.plannedItems.length; i++) { -%>
 					<li><%=savedTrip.plannedItems[i].description%></li>
 				<% } -%>
 			</ul>
-
-
 		</div>
   
   		<div class="column">
-			<h6>WISH LIST</h6>
-			
+			<h6>WISH LIST</h6>			
 			<!-- we need to loop through all of the items that were chosen from the wish list and display them here -->
-
 			<ul>
 				<% for (let i = 0; i < savedTrip.suggestedItems.length; i++) { -%>
 					<li><%=savedTrip.suggestedItems[i].description%></li>
 				<% } -%>
 			</ul>
-
-
 		</div>	
 
 		<a href="/trips/createList">Add Item</a>

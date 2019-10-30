@@ -5,11 +5,6 @@ const TripItem = require('../models/tripItem.js')
 const User = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 
-// //edit group route
-// router.get('/editGroup', (req, res) => {
-// 	res.render('trips/editGroup.ejs')
-// });
-
 // rendering create trip page
 router.get('/createTripPlan', (req, res) => {
 	res.render('trips/createTripPlan.ejs')
@@ -38,16 +33,6 @@ router.get('/createGroup', (req, res) => {
 	res.render('trips/createGroup.ejs')
 });
 
-// router.get('/tripHomePage/', async(req, res, next) => {
-// 	try {
-// 		const foundTrip = await Trip.findById(req.session.savedTrip._id);
-// 		res.render('trips/tripHomePage.ejs', {
-// 			savedTrip: foundTrip
-// 		})
-// 	} catch(err){
-// 		next(err)
-// 	}
-// })
 router.get('/tripHomePage/:id', async(req, res, next) => {
 	try {
 		const foundTrip = await Trip.findById(req.params.id)
@@ -69,12 +54,7 @@ router.get('/tripHomePage/:id', async(req, res, next) => {
 	} catch(err){
 		next(err)
 	}
-})
-
-
-	//find Trips 
-	//populating listitem
-	
+})	
 
 // post route
 // This creates a new Trip

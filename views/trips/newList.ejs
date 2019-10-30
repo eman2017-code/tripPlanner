@@ -13,10 +13,6 @@
 		Description: <input type="text" name="description"> 
 		</br>
 		</br>
-		<!-- name can be changed to match list in schema -->
-		<!-- <input type="radio" name="edit" value="itemsToPlan">To Do List <br>
-		<input type="radio" name="edit" value="plannedItems">Itenerary <br>
-		<input type="radio" name="edit" value="suggestedItems">Wish List  -->
 		<select name='chosenList'>
 			<option value='itemsToPlan'>To Do</option>
 			<option value='plannedItems'>Itinerary</option>
@@ -25,8 +21,6 @@
 
 		<br>
 		<br>
-		<!-- we are getting the savedTrip._id from the body
-		this is how we referred to getting it in our tripItemController -->
         <input type="hidden" name="tripId" value="<%=savedTrip._id%>">
 		<input type="submit" value="submit">
 
