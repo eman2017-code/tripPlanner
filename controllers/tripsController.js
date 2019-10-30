@@ -48,9 +48,9 @@ router.get('/createGroup', (req, res) => {
 // 		next(err)
 // 	}
 // })
-router.get('/tripHomePage/', async(req, res, next) => {
+router.get('/tripHomePage/:id', async(req, res, next) => {
 	try {
-		const foundTrip = await Trip.findById(req.session.savedTrip._id)
+		const foundTrip = await Trip.findById(req.params.id)
 		.populate({
 			path: 'itemsToPlan'
 		})
@@ -92,7 +92,7 @@ router.post('/tripHomePage', async (req, res, next) => {
 		req.session.savedTrip = savedTrip;
 		console.log(savedTrip);
 		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
-		res.redirect('/trips/tripHomePage')
+		res.redirect('/trips/tripHomePage/' + createdTrip._id)
 	}
 	catch(err) {
 		next(err)

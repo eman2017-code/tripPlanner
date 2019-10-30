@@ -34,6 +34,7 @@
 		<div class="column">
 			<h6>TO DO</h6>
 
+			<!-- we need to loop through all of the items that were chosen from the to do list and display them here -->	
 
 			<ul>
 				<% for (let i = 0; i < savedTrip.itemsToPlan.length; i++) { -%>
@@ -41,11 +42,12 @@
 				<% } -%>
 			</ul>
 
-			<!-- we need to loop through all of the items that were chosen from the to do list and display them here -->	
 		</div>
 	
 		<div class="column">
 			<h6>ITENERARY</h6>
+			
+			<!-- we need to loop through all of the items that were chosen from the itenerary list and display them here -->
 
 			<ul>
 				<% for (let i = 0; i < savedTrip.plannedItems.length; i++) { -%>
@@ -53,12 +55,13 @@
 				<% } -%>
 			</ul>
 
-			<!-- we need to loop through all of the items that were chosen from the itenerary list and display them here -->
 
 		</div>
   
   		<div class="column">
 			<h6>WISH LIST</h6>
+			
+			<!-- we need to loop through all of the items that were chosen from the wish list and display them here -->
 
 			<ul>
 				<% for (let i = 0; i < savedTrip.suggestedItems.length; i++) { -%>
@@ -66,7 +69,6 @@
 				<% } -%>
 			</ul>
 
-			<!-- we need to loop through all of the items that were chosen from the wish list and display them here -->
 
 		</div>	
 
