@@ -14,6 +14,7 @@ router.post('/createItem/:id', (req, res) => {
 			if(err) {
 				res.send(err);
 			} else {
+				console.log(createdTripItem);
 				// push the created trip into the foundTrip (id)'s array
 				foundTrip.itemsToPlan.push(createdTripItem);
 				// then we need to save it
