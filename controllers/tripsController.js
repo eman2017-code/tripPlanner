@@ -37,12 +37,20 @@ router.get('/createGroup', (req, res) => {
 	res.render('trips/createGroup.ejs')
 });
 
+//trip home page
+
 router.get('/tripHomePage', (req, res) => {
 	const foundTrip = Trip.findById(req.params.id);
 	res.render('trips/tripHomePage.ejs', {
 		savedTrip: foundTrip
 	})
+
 })
+
+	//find Trips 
+	//populating listitem
+	
+
 // post route
 // This creates a new Trip
 router.post('/tripHomePage', async (req, res, next) => {
@@ -63,6 +71,7 @@ router.post('/tripHomePage', async (req, res, next) => {
 		const savedTrip = await createdTrip.save();
 		//this saves the trip to the session to be accessed later from a different route
 		req.session.savedTrip = savedTrip;
+		console.log(savedTrip);
 		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
 		res.redirect('/trips/tripHomePage')
 	}
