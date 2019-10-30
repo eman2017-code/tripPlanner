@@ -7,9 +7,9 @@
 
 	<h1>Add New Item to List</h1>
 
-	<form action="/trips/createTripHomePage/" method="POST">
+	<form action="/trips/createTripHomePage<%=savedTrip._id%>" method="POST">
 
-		Description: <input type="text" name="description"> 
+		Name: <input type="text" name="name"> 
 		</br>
 		</br>
 		<input type="radio" name="edit" value="toDo">To Do List <br>

@@ -3,14 +3,32 @@ const router = express.Router();
 const Tripitem = require('../models/tripItem.js')
 const Trip = require('../models/trip.js');
 const User = require('../models/user.js');
-const TripItem = require('../models/tripItem.js');
 const bcrypt = require('bcryptjs');
 
 //create list item
-router.get('/createItem', (req, res) => {
-	res.render('trips/newList.ejs')
+// router.get('/createItem/:id', async(req, res, next) => {
+// 	res.render('trips/newList.ejs', {
+// 		const foundTrip = await Trip.findById(req.params.id)
+
+// 	})
+// 	console.log(foundTrip);
+// })
+
+router.post('/createItem/:id', async(req, res, next) => {
+	try {//fnding the trip the list item will apart of
+		//creating trip itm
+		const tripItem = await TripItem.create(req.body);
+		console.log(tripItem);
+		tripItem.name = req.body.name;
+		//saving trip item
+		const savedItem = await tripItem.save();
+		console.log(savedItem);
+		res.redirect('/trips/createTripHomePage' + foundTrip._id)
+	} catch(err){
+		next(err)
+	}
 })
-//find the trip list item is apart of
+//find the trip idlist item is apart of
 //create list item
 //add list item to trip 
 //display item on trp show page

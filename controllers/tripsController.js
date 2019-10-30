@@ -21,8 +21,11 @@ router.get('/createTripHomePage/:id', async (req, res, next) => {
 		const foundTrip = await Trip.findById(req.params.id);
 		// render the page with the found Trip
 		// console.log("\n here is foundTrip in GET /createTripHomePage/:id ", foundTrip);
+		req.session.savedTrip = foundTrip;
+		console.log('this is req.session.savedTrip at creeateTripHomePage');
+		console.log(req.session.savedTrip);
 		res.render('trips/createTripHomePage.ejs', {
-			savedTrip: foundTrip
+			savedTrip: req.session.savedTrip
 		})
 	}
 	catch(err) {
@@ -52,6 +55,8 @@ router.post('/', async (req, res, next) => {
 		createdTrip.description = req.body.description;
 		// save the trip
 		const savedTrip = await createdTrip.save();
+		//this saves the trip to the session to be accessed later from a different route
+		req.session.savedTrip = savedTrip;
 		res.redirect('trips/createTripHomePage/' + savedTrip._id);
 	}
 	catch(err) {
@@ -99,7 +104,9 @@ router.put('/:id', async(req, res, next) => {
 
 // new route
 router.get('/createList', (req, res) => {
-    res.render('trips/newList.ejs');
+    res.render('trips/newList.ejs', {
+    	savedTrip: req.session.savedTrip
+    });
 });
 
 //delete route
