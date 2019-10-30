@@ -57,7 +57,7 @@ router.post('/createNewTrip', async (req, res, next) => {
 		const savedTrip = await createdTrip.save();
 		//this saves the trip to the session to be accessed later from a different route
 		req.session.savedTrip = savedTrip;
-		console.log('this is req.session.savedTrip at createNewTrip');
+		// console.log('this is req.session.savedTrip at createNewTrip');
 		console.log(savedTrip);
 		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
 		res.render('trips/createTripHomePageDisplay.ejs', {
@@ -82,6 +82,7 @@ router.get('/savedTrips', async(req, res, next) => {
 })
 
 //edit route
+// this is editing the trip as a whole
 router.get('/:id/tripEdit', async(req, res, next) => {
 	try {
 		// find the trip first
@@ -96,10 +97,11 @@ router.get('/:id/tripEdit', async(req, res, next) => {
 })
 
 // update route
+// this is updated the trip
 router.put('/:id', async(req, res, next) => {
 	try {
 		const updateTrip = await Trip.findById(req.params.id)
-		updateTrip.destination = req.body.destination
+		updateTrip.place = req.body.place
 		updateTrip.startdate = req.body.startDate;
 		updateTrip.endDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
@@ -111,6 +113,7 @@ router.put('/:id', async(req, res, next) => {
 })
 
 // new route
+// this created a new list item to be added to the page
 router.get('/createList', (req, res) => {
 	// the saved trip has the information of the saved session of the user
     res.render('trips/newList.ejs', {
