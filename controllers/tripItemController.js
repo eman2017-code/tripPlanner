@@ -14,14 +14,32 @@ router.post('/createItem/:id', (req, res) => {
 			if(err) {
 				res.send(err);
 			} else {
+				console.log('-----------------------------------');
+				console.log('this is the created Trip item description');
+				const itemDescription = createdTripItem.description
+				console.log(itemDescription)
+				
+				// createdTripItem.description = req.body.description
+				console.log('-----------------------------------');
+
 				// push the created trip into the foundTrip (id)'s array
-				foundTrip.itemsToPlan.push(createdTripItem);
+				console.log('----------------------------------');
+				console.log('this is the items to plan in foundTrip');
+				foundTrip.itemsToPlan.push(itemDescription);
+				console.log(foundTrip.itemsToPlan);
+				// console.log(foundTrip.itemsToPlan);
+				console.log('-----------------------------------');
 				// then we need to save it
 				foundTrip.save((err, data) => {
 					// render the original page again
-					console.log('this is the data from the creaete item route');
-					console.log(data);
-					console.log('--------------------');
+					// console.log('this is the data');
+					// console.log(data);
+					// console.log('this is the itemsToPlan');
+					// console.log(data.itemsToPlan);
+					//data.itemsToPlan just returns the created item ID in an array but not the 
+					// created item Object
+
+					// console.log('--------------------');
 					res.render('trips/tripHomePage.ejs', {
 						savedTrip: data
 					})

@@ -10,9 +10,10 @@
 	<form action="/tripItems/createItem/<%=savedTrip._id%>" method="POST">
 
 		
-		Description: <input type="text" name="name"> 
+		Description: <input type="text" name="description"> 
 		</br>
 		</br>
+		<!-- name can be changed to match list in schema -->
 		<input type="radio" name="edit" value="toDo">To Do List <br>
 		<input type="radio" name="edit" value="itenerary">Itenerary <br>
 		<input type="radio" name="edit" value="wishList">Wish List 
