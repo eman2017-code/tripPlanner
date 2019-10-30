@@ -43,6 +43,19 @@ nav a{
 	margin-top: 5%;
 }
 
+.createTripPlan {
+  border: 1px solid black;
+  text-align: center;
+  margin: 3%;
+  padding: 3%;
+  display: block;
+}
+
+.createTripPlan label{
+  /*background-color: yellow;*/
+  margin: 2px;
+}
+
 @keyframes typewriter {
     from {
         width: 0;
