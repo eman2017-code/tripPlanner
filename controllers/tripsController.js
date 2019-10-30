@@ -44,7 +44,7 @@ router.post('/createNewTrip', async (req, res, next) => {
 		// create a trip
 		const createdTrip =  await Trip.create(req.body);
 		// get the destination
-		createdTrip.destination = req.body.destination;
+		createdTrip.place = req.body.place;
 		// get the members name
 		createdTrip.member = req.body.member;
 		// get the start date 
