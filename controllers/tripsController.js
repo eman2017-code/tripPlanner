@@ -39,7 +39,7 @@ router.get('/createGroup', (req, res) => {
 
 // post route
 // This creates a new Trip
-router.post('/createNewTrip', async (req, res, next) => {
+router.post('/tripHomePage', async (req, res, next) => {
 	try {
 		// create a trip
 		const createdTrip =  await Trip.create(req.body);
@@ -106,7 +106,7 @@ router.put('/:id', async(req, res, next) => {
 		updateTrip.endDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
 		await updateTrip.save();
-		res.redirect('/trips/createTripHomePage/' + updateTrip._id)
+		res.redirect('/trips/tripHomePage')
 	} catch(err){
 		next(err)
 	}
