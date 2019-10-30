@@ -14,6 +14,16 @@ router.post('/createItem/:id', (req, res) => {
 			if(err) {
 				res.send(err);
 			} else {
+
+				// if the value of the button === 'plannedItems'
+				// foundTrip.itemsToPlan.push(createdTripItem)
+
+				// else if the value of the button  === 'itemsToPlan'
+				// foundTrip.plannedTimes.push(createdTripItem)
+
+				// else === 'suggestedItems'
+				// foundTrip.wishList.push(createdTripItem)
+
 				console.log(createdTripItem);
 				// push the created trip into the foundTrip (id)'s array
 				foundTrip.itemsToPlan.push(createdTripItem);
@@ -23,6 +33,19 @@ router.post('/createItem/:id', (req, res) => {
 					console.log('this is the data from the creaete item route');
 					console.log(data);
 					console.log('--------------------');
+
+				if(req.body.chosenList == 'itemsToPlan') {
+					foundTrip.itemsToPlan.push(createdTripItem)
+					console.log('this one goes in toDo');
+				} else if(req.body.chosenList == 'plannedItems') {
+					foundTrip.plannedItems.push(createdTripItem)
+					console.log('this one is for plannedItems');
+				} else if(req.body.chosenList == 'suggestedItems'){
+					foundTrip.suggestedItems.push(createdTripItem)
+					console.log('this one is for suggested items');
+				} else {
+					res.send('error')
+				}
 					res.render('trips/tripHomePage.ejs', {
 						savedTrip: data
 					})

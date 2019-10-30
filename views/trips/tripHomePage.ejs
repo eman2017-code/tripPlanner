@@ -47,12 +47,24 @@
 		<div class="column">
 			<h6>ITENERARY</h6>
 
+			<ul>
+				<% for (let i = 0; i < savedTrip.plannedItems.length; i++) { -%>
+					<li><%=savedTrip.plannedItems[i].description%></li>
+				<% } -%>
+			</ul>
+
 			<!-- we need to loop through all of the items that were chosen from the itenerary list and display them here -->
 
 		</div>
   
   		<div class="column">
 			<h6>WISH LIST</h6>
+
+			<ul>
+				<% for (let i = 0; i < savedTrip.suggestedItems.length; i++) { -%>
+					<li><%=savedTrip.suggestedItems[i].description%></li>
+				<% } -%>
+			</ul>
 
 			<!-- we need to loop through all of the items that were chosen from the wish list and display them here -->
 
