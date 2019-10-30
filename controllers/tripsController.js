@@ -58,7 +58,7 @@ router.post('/tripHomePage', async (req, res, next) => {
 		//this saves the trip to the session to be accessed later from a different route
 		req.session.savedTrip = savedTrip;
 		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
-		res.render('trips/createTripHomePageDisplay.ejs', {
+		res.render('trips/tripHomePage.ejs', {
 			savedTrip: savedTrip
 		})
 	}
