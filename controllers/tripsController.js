@@ -95,7 +95,7 @@ router.get('/:id/tripEdit', async(req, res, next) => {
 })
 
 // update route
-// this is updated the trip
+// this is updating the trip
 router.put('/:id', async(req, res, next) => {
 	try {
 		const updateTrip = await Trip.findById(req.params.id)
@@ -104,7 +104,7 @@ router.put('/:id', async(req, res, next) => {
 		updateTrip.endDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
 		await updateTrip.save();
-		res.redirect('/trips/createTripHomePage/' + updateTrip._id)
+		res.redirect('/trips/createTripHomePageDisplay/' + updateTrip._id)
 	} catch(err){
 		next(err)
 	}
