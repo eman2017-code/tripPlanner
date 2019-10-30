@@ -44,7 +44,7 @@ router.post('/tripHomePage', async (req, res, next) => {
 		// create a trip
 		const createdTrip =  await Trip.create(req.body);
 		// get the destination
-		createdTrip.place = req.body.place;
+		createdTrip.destination = req.body.destination;
 		// get the members name
 		createdTrip.member = req.body.member;
 		// get the start date 
@@ -99,7 +99,7 @@ router.get('/:id/tripEdit', async(req, res, next) => {
 router.put('/:id', async(req, res, next) => {
 	try {
 		const updateTrip = await Trip.findById(req.params.id)
-		updateTrip.place = req.body.place
+		updateTrip.destination = req.body.destination
 		updateTrip.startdate = req.body.startDate;
 		updateTrip.endDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
