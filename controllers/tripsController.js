@@ -104,6 +104,8 @@ router.put('/:id', async(req, res, next) => {
 
 // new route
 router.get('/createList', (req, res) => {
+	console.log('this is the req.session.savedTrip from the createList route');
+	console.log(req.session.savedTrip);
     res.render('trips/newList.ejs', {
     	savedTrip: req.session.savedTrip
     });

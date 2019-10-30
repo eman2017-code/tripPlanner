@@ -5,14 +5,7 @@ const Trip = require('../models/trip.js');
 const User = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 
-//create list item
-// router.get('/createItem/:id', async(req, res, next) => {
-// 	res.render('trips/newList.ejs', {
-// 		const foundTrip = await Trip.findById(req.params.id)
 
-// 	})
-// 	console.log(foundTrip);
-// })
 
 router.post('/createItem/:id', async(req, res, next) => {
 	try {//fnding the trip the list item will apart of
@@ -23,7 +16,7 @@ router.post('/createItem/:id', async(req, res, next) => {
 		//saving trip item
 		const savedItem = await tripItem.save();
 		console.log(savedItem);
-		res.redirect('/trips/createTripHomePage' + foundTrip._id)
+		res.redirect('/trips/createTripHomePage' + savedTrip._id)
 	} catch(err){
 		next(err)
 	}
