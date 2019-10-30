@@ -15,7 +15,10 @@ router.get('/createTripPlan', (req, res) => {
 });
 
 // we have to get the id of the specific id of the trip that the user is creating
-router.get('/createTripHomePage/:id', async (req, res, next) => {
+/*******
+ * This method creates new trip items
+ */
+router.get('/addNewItem/:id', async (req, res, next) => {
 	try {
 		// find the actual trip
 		const foundTrip = await Trip.findById(req.params.id);
@@ -24,7 +27,7 @@ router.get('/createTripHomePage/:id', async (req, res, next) => {
 		req.session.savedTrip = foundTrip;
 		console.log('this is req.session.savedTrip at creeateTripHomePage');
 		console.log(req.session.savedTrip);
-		res.render('trips/createTripHomePage.ejs', {
+		res.render('trips/createTripHomePageDisplay.ejs', {
 			savedTrip: req.session.savedTrip
 		})
 	}
@@ -39,7 +42,12 @@ router.get('/createGroup', (req, res) => {
 });
 
 // post route
-router.post('/', async (req, res, next) => {
+/*********
+*
+* This creates a new Trip
+*
+*/
+router.post('/createNewTrip', async (req, res, next) => {
 	try {
 		// create a trip
 		const createdTrip =  await Trip.create(req.body);
@@ -57,7 +65,12 @@ router.post('/', async (req, res, next) => {
 		const savedTrip = await createdTrip.save();
 		//this saves the trip to the session to be accessed later from a different route
 		req.session.savedTrip = savedTrip;
-		res.redirect('trips/createTripHomePage/' + savedTrip._id);
+		console.log('this is req.session.savedTrip at createNewTrip');
+		console.log(savedTrip);
+		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
+		res.render('trips/createTripHomePageDisplay.ejs', {
+			savedTrip: savedTrip
+		})
 	}
 	catch(err) {
 		next(err)
@@ -115,12 +128,8 @@ router.get('/createList', (req, res) => {
 router.delete('/:id', (req, res) => {
     Trip.deleteOne({_id: req.params.id}, (err, result) => {
         if(err){
-            // res.send(err)
-            console.log('well that didnt work');
+            res.send(err)
         } else {
-            // console.log('this will work');
-
-
             res.redirect('/users/homePage');
 
         }

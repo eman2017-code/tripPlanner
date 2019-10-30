@@ -7,9 +7,10 @@
 
 	<h1>Add New Item to List</h1>
 
-	<form action="/trips/createTripHomePage/<%=savedTrip._id%>" method="POST">
+	<form action="/tripItems/createItem/<%=savedTrip._id%>" method="POST">
 
-		Name: <input type="text" name="name"> 
+		
+		Description: <input type="text" name="name"> 
 		</br>
 		</br>
 		<input type="radio" name="edit" value="toDo">To Do List <br>
@@ -18,7 +19,7 @@
 
 		<br>
 		<br>
-
+        <input type="hidden" name="tripId" value="<%=savedTrip._id%>">
 		<input type="submit" value="submit">
 
 	</form>
