@@ -6,29 +6,16 @@
 <body>
 	<h1>Edit Your Trip!</h1>
 	<form method="POST" action="/trips/<%=trip._id%>?_method=PUT">
-		<!-- <p>Destination:</p> -->
 		Destination
 		<input type="text" name="destination" value="<%=trip.destination%>"><br>	
-		<!-- <button type='submit'>Submit</button> -->
-
-		<!-- <p>Departure:</p> -->
 		Departure
 		<input type="date" name="departure" value="<%=trip.startDate%>"><br>	
-		<!-- <button type='submit'>Submit</button> -->
-		<!-- <p>Return:</p> -->
 		Return
 		<input type="date" name="Return" value="<%=trip.endDate%>">	<br>
-		<!-- <button type='submit'>Submit</button> -->
-		<!-- <p>Description:</p> -->
 		Description
 		<input type="text" name="description" value="<%=trip.description%>">	
-		<!-- <button type='submit'>Submit</button> --><br>
 
-<!-- 		<p>Add/Remove a group member by their username</p>
-		We will also implement being able to make certain members moderators from tis page
-		<input type="username" name="username" placeholder="insert username here">	<br> -->
 		<br>
-		<!-- <button type='submit' valuee="submit changes">Submit</button> -->
 		<input type="submit" name="" value="submit changes">
 	</form>
 	<form method='POST' action='/trips/<%=trip._id%>?_method=DELETE'>

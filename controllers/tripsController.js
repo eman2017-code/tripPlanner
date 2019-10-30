@@ -14,20 +14,16 @@ router.get('/createTripPlan', (req, res) => {
 	res.render('trips/createTripPlan.ejs')
 });
 
-// we have to get the id of the specific id of the trip that the user is creating
-/*******
- * This method creates new trip items
- */
+// this method creates new items to the list
 router.get('/addNewItem/:id', async (req, res, next) => {
 	try {
 		// find the actual trip
 		const foundTrip = await Trip.findById(req.params.id);
-		// render the page with the found Trip
-		// console.log("\n here is foundTrip in GET /createTripHomePage/:id ", foundTrip);
+		// the foundTrip now is saved within the current session of the user
 		req.session.savedTrip = foundTrip;
-		console.log('this is req.session.savedTrip at creeateTripHomePage');
-		console.log(req.session.savedTrip);
+		// render the home page for the actual trip for user
 		res.render('trips/createTripHomePageDisplay.ejs', {
+			// the saved trip is now the saved session of the user
 			savedTrip: req.session.savedTrip
 		})
 	}
@@ -42,11 +38,7 @@ router.get('/createGroup', (req, res) => {
 });
 
 // post route
-/*********
-*
-* This creates a new Trip
-*
-*/
+// This creates a new Trip
 router.post('/createNewTrip', async (req, res, next) => {
 	try {
 		// create a trip
@@ -79,6 +71,7 @@ router.post('/createNewTrip', async (req, res, next) => {
 
 router.get('/savedTrips', async(req, res, next) => {
 	try {
+		// find the all trips
 		const foundTrips = await Trip.find({})
 		res.render('trips/tripIndex.ejs', {
 			foundTrips: foundTrips
@@ -91,7 +84,9 @@ router.get('/savedTrips', async(req, res, next) => {
 //edit route
 router.get('/:id/tripEdit', async(req, res, next) => {
 	try {
+		// find the trip first
 		const foundTrip = await Trip.findById(req.params.id)
+		// render the edit page with the trip that correlates accordingly
 		res.render('trips/tripEdit.ejs', {
 			trip: foundTrip
 		})
@@ -117,8 +112,7 @@ router.put('/:id', async(req, res, next) => {
 
 // new route
 router.get('/createList', (req, res) => {
-	console.log('this is the req.session.savedTrip from the createList route');
-	console.log(req.session.savedTrip);
+	// the saved trip has the information of the saved session of the user
     res.render('trips/newList.ejs', {
     	savedTrip: req.session.savedTrip
     });
@@ -126,10 +120,12 @@ router.get('/createList', (req, res) => {
 
 //delete route
 router.delete('/:id', (req, res) => {
+	// find the id of the trip and delete it
     Trip.deleteOne({_id: req.params.id}, (err, result) => {
         if(err){
             res.send(err)
         } else {
+        	// bring them back to the home page
             res.redirect('/users/homePage');
 
         }

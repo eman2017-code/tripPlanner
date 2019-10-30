@@ -11,8 +11,11 @@
 
 	<header>
 		<!-- this should be the name of the trip that the user entered -->
-		<h1><%=savedTrip.destination%> <%=savedTrip.startDate%> thru <%=savedTrip.endDate%></h1>
-		<h2><%=savedTrip.description%></h2>
+		<h1><%=savedTrip.destination%></h1> 
+		<h5><%=savedTrip.startDate%> thru <%=savedTrip.endDate%></h5>
+
+		<h8><%=savedTrip.description%></h8>
+		<br>
 		<a href="/trips/<%=savedTrip._id%>/tripEdit">Edit this trip</a>
 
 
