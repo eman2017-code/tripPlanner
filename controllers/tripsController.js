@@ -54,6 +54,12 @@ router.get('/tripHomePage/:id', async(req, res, next) => {
 		.populate({
 			path: 'itemsToPlan'
 		})
+		.populate({
+			path: 'plannedItems'
+		})
+		.populate({
+			path: 'suggestedItems'
+		})
 		.exec()
 		console.log(foundTrip);
 		res.render('trips/tripHomePage.ejs', {

@@ -64,7 +64,7 @@ const bcrypt = require('bcryptjs');
 
 router.post('/createItem/:id', async (req, res, next) => {
 	try {
-		const foundTrip = await Trip.findById(req.params.id);
+		const foundTrip = await Trip.findById(req.params.id)
 		const createdTripItem = await TripItem.create(req.body);
 
 		if(req.body.chosenList == 'itemsToPlan') {
@@ -73,12 +73,12 @@ router.post('/createItem/:id', async (req, res, next) => {
 
 		} else if(req.body.chosenList == 'plannedItems') {
 			foundTrip.plannedItems.push(createdTripItem)
-			console.log('this one is for plannedItems');
+			// console.log('this one is for plannedItems');
 			await foundTrip.save()
 
 		} else if(req.body.chosenList == 'suggestedItems'){
 			foundTrip.suggestedItems.push(createdTripItem)
-			console.log('this one is for suggested items');
+			// console.log('this one is for suggested items');
 			await foundTrip.save()
 
 		} else {
