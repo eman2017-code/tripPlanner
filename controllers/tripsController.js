@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Trip = require('../models/trip.js');
+const TripItem = require('../models/tripItem.js')
 const User = require('../models/user.js');
 const bcrypt = require('bcryptjs');
 
@@ -37,25 +38,33 @@ router.get('/createGroup', (req, res) => {
 	res.render('trips/createGroup.ejs')
 });
 
-//trip home page
-
-// router.get('/tripHomePage/', (req, res) => {
-// 	const foundTrip = Trip.findById(req.session.savedTrip._id);
-// 	res.render('trips/tripHomePage.ejs', {
-// 		savedTrip: foundTrip
-// 	})
+// router.get('/tripHomePage/', async(req, res, next) => {
+// 	try {
+// 		const foundTrip = await Trip.findById(req.session.savedTrip._id);
+// 		res.render('trips/tripHomePage.ejs', {
+// 			savedTrip: foundTrip
+// 		})
+// 	} catch(err){
+// 		next(err)
+// 	}
 // })
-
 router.get('/tripHomePage/', async(req, res, next) => {
 	try {
-		const foundTrip = await Trip.findById(req.session.savedTrip._id);
+		const foundTrip = await Trip.findById(req.session.savedTrip._id)
+		.populate({
+			path: 'itemsToPlan'
+		})
+		.exec()
+		console.log(foundTrip);
 		res.render('trips/tripHomePage.ejs', {
-			savedTrip: foundTrip
+			savedTrip: foundTrip,
+			// tripItem: foundTrip.itemsToPlan
 		})
 	} catch(err){
 		next(err)
 	}
 })
+
 
 	//find Trips 
 	//populating listitem

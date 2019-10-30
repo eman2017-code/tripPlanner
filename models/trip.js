@@ -18,15 +18,15 @@ const tripSchema = new mongoose.Schema({
 	//the follow are arrays of object Id's from the tripitem schema
 	plannedItems: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Tripitem',
+		ref: 'TripItem',
 	}],
 	itemsToPlan: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Tripitem',
+		ref: 'TripItem',
 	}],
 	suggestedItems: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Tripitem'
+		ref: 'TripItem'
 	}]
 })
 

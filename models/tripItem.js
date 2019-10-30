@@ -13,3 +13,4 @@ const tripItemSchema = new mongoose.Schema({
 
 const TripItem = mongoose.model('TripItem', tripItemSchema)
 module.exports = TripItem;
+

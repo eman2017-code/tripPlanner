@@ -34,6 +34,13 @@
 		<div class="column">
 			<h6>TO DO</h6>
 
+
+			<ul>
+				<% for (let i = 0; i < savedTrip.itemsToPlan.length; i++) { -%>
+					<li><%=savedTrip.itemsToPlan[i].description%></li>
+				<% } -%>
+			</ul>
+
 			<!-- we need to loop through all of the items that were chosen from the to do list and display them here -->	
 		</div>
 	
