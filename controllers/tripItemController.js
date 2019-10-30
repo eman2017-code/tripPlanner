@@ -19,7 +19,10 @@ router.post('/createItem/:id', (req, res) => {
 				// then we need to save it
 				foundTrip.save((err, data) => {
 					// render the original page again
-					res.render('trips/createTripHomePageDisplay.ejs', {
+					console.log('this is the data from the creaete item route');
+					console.log(data);
+					console.log('--------------------');
+					res.render('trips/tripHomePage.ejs', {
 						savedTrip: data
 					})
 				})
