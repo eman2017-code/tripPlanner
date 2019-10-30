@@ -39,12 +39,22 @@ router.get('/createGroup', (req, res) => {
 
 //trip home page
 
-router.get('/tripHomePage', (req, res) => {
-	const foundTrip = Trip.findById(req.params.id);
-	res.render('trips/tripHomePage.ejs', {
-		savedTrip: foundTrip
-	})
+// router.get('/tripHomePage/', (req, res) => {
+// 	const foundTrip = Trip.findById(req.session.savedTrip._id);
+// 	res.render('trips/tripHomePage.ejs', {
+// 		savedTrip: foundTrip
+// 	})
+// })
 
+router.get('/tripHomePage/', async(req, res, next) => {
+	try {
+		const foundTrip = await Trip.findById(req.session.savedTrip._id);
+		res.render('trips/tripHomePage.ejs', {
+			savedTrip: foundTrip
+		})
+	} catch(err){
+		next(err)
+	}
 })
 
 	//find Trips 
