@@ -12,7 +12,14 @@ router.post('/createItem/:id', async (req, res, next) => {
 		// find the trip
 		const foundTrip = await Trip.findById(req.params.id)
 		// create the trip item
-		const createdTripItem = await TripItem.create(req.body);
+		console.log("this is req.body in /createItem/:id POST" + '------------------------')
+		console.log(req.body)
+		console.log("this is req.body in /createItem/:id POST" + '------------------------')
+		const newTripItem = {
+			description: req.body.description,
+			chosenList: req.body.chosenList
+		}
+		const createdTripItem = await TripItem.create(newTripItem);
 
 		// conditionals as to where to put it in
 		if(req.body.chosenList == 'itemsToPlan') {
@@ -39,14 +46,44 @@ router.post('/createItem/:id', async (req, res, next) => {
 	}
 })
 
-// edit route
+// getting the edit page
 // make a route for the user to edit an item on the list
 router.get('/:id/tripItemEdit', async (req, res, next) => {
 	try {
 		const foundItem = await TripItem.findById(req.params.id); 
+		foundItem.description = req.body.description
+		console.log(foundItem, '<-- this is the found item');
 		res.render('trips/tripItemEdit.ejs', {
 			foundItem: foundItem
 		})
+	}
+	catch(err) {
+		next(err)
+	}
+})
+
+// editing actual item
+router.put('/:id', async (req, res, next) => {
+	try {
+		// find the trip
+		const foundTrip = await Trip.findOne({'itemsToPlan': req.params.id});
+		console.log('----- this is the found trip in the edit item route');
+		console.log(foundTrip);
+		console.log('--------------------');
+		// first find the items
+		const updatedItem = await TripItem.findById(req.params.id);
+		console.log('this is the found item in the edit route');
+		console.log(updatedItem);
+		console.log('----------------');
+		// update the description
+		updatedItem.description = req.body.description
+		// save it -- we are mutating a document
+		await updatedItem.save();
+		console.log('this is afte editing')
+		console.log(foundTrip);
+		console.log('-------------------');
+		// redirect
+		res.redirect('/trips/tripHomePage/' + foundTrip._id);
 	}
 	catch(err) {
 		next(err)

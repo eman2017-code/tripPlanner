@@ -69,14 +69,14 @@ router.post('/tripHomePage', async (req, res, next) => {
 		// get the start date 
 		createdTrip.startDate = req.body.startDate;
 		// get the end date that the user entered
-		createdTrip.endDate = req.body.returnDate;
+		createdTrip.returnDate  = req.body.returnDate;
 		// get the description that the user entered
 		createdTrip.description = req.body.description;
 		// save the trip
 		const savedTrip = await createdTrip.save();
 		//this saves the trip to the session to be accessed later from a different route
 		req.session.savedTrip = savedTrip;
-		console.log(savedTrip);
+		//console.log(savedTrip);
 		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
 		res.redirect('/trips/tripHomePage/' + createdTrip._id)
 	}

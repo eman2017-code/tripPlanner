@@ -36,9 +36,10 @@
 			<!-- we need to loop through all of the items that were chosen from the to do list and display them here -->	
 			<ul>
 				<% for (let i = 0; i < savedTrip.itemsToPlan.length; i++) { -%>
-					<li><%=savedTrip.itemsToPlan[i].description%></li>
 
-					
+					<li>
+						<a href="/tripItems/<%=savedTrip.itemsToPlan[i]._id%>/tripItemEdit"><%=savedTrip.itemsToPlan[i].description%></a>
+					</li>
 
 				<% } -%>
 			</ul>
@@ -50,7 +51,10 @@
 			<!-- we need to loop through all of the items that were chosen from the itenerary list and display them here -->
 			<ul>
 				<% for (let i = 0; i < savedTrip.plannedItems.length; i++) { -%>
-					<li><%=savedTrip.plannedItems[i].description%></li>
+					<li>
+						<a href="/tripItems/<%=savedTrip.plannedItems[i]._id %>/tripItemEdit"><%=savedTrip.plannedItems[i].description%></a>
+					</li>
+
 
 
 				<% } -%>
@@ -62,7 +66,9 @@
 			<!-- we need to loop through all of the items that were chosen from the wish list and display them here -->
 			<ul>
 				<% for (let i = 0; i < savedTrip.suggestedItems.length; i++) { -%>
-					<li><%=savedTrip.suggestedItems[i].description%></li>
+					<li>
+						<a href="/tripItems/<%=savedTrip.suggestedItems[i]._id %>/tripItemEdit"><%=savedTrip.suggestedItems[i].description%></a>
+					</li>
 
 
 				<% } -%>
