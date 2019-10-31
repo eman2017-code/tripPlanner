@@ -29,6 +29,14 @@
 	<div class="members">
 		<h2>Members</h2>
 
+		<ul>
+			<% for (let i = 0; i < savedTrip.members.length; i++) { -%>
+				<li>
+					<%= savedTrip.members[i] %>
+				</li>
+			<% } -%>
+		</ul>
+
 		
 
 		<a href="/trips/addMembers/">Add Member</a>

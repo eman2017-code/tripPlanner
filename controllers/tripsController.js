@@ -163,25 +163,36 @@ router.delete('/:id', (req, res) => {
 		// User.find({// find the username})
 		// if username !== null --> this means that it DOES exist
 
-// new route
-// this created a new member to be added to the home page
-router.get('/addMembers', (req, res) => {
-	// the saved trip has the information of the saved session of the user
-    res.render('trips/addMembers.ejs', {
-    	savedTrip: req.session.savedTrip
-    });
-});
+// // new route
+// // this created a new member to be added to the home page
+// router.get('/addMembers', (req, res) => {
+// 	// the saved trip has the information of the saved session of the user
+//     res.render('trips/addMembers.ejs', {
+//     	savedTrip: req.session.savedTrip
+//     });
+// });
 
 
-// // post route to show the member(s) that the user has added
-// router.post('/addMembers/:id', async (req, res, next) => {
+// // creating a member and adding it to the page
+// router.post('/addMembers/', async (req, res, next) => {
 // 	try {
-// 		const foundTrip = await Trip.findById(req.params.id);
-// 		// console.log(foundTrip, '<--- this is the foundTrip');
-// 		console.log('this worked!!');
-// 		res.redirect('/trips/tripHomePage/' + foundTrip._id);
-		
-// 	}
+// 		// find the trip
+// 		const foundTrip = await Trip.findById(req.params.id)
+// 		// populate this path
+// 		.populate({
+// 			path: 'members'
+// 		})
+// 		// execute it
+// 		.exec()
+// 		// find the user by the username from the form
+// 		const newMember = await User.find({username: req.body.username})
+// 		// add the new member to the members array
+// 		foundTrip.members.push(newMember)
+// 		// save the foundTrip, because you added a new member to its members array
+// 		await foundTrip.save()
+
+// 		res.redirect('/trips/tripHomePage/' + foundTrip._id)
+// 	}	
 // 	catch(err) {
 // 		next(err)
 // 	}
