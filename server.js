@@ -1,3 +1,6 @@
+// require dotenv at the top of this file
+require('dotenv').config()
+// console.log(process.env);
 // dependencies
 const express = require('express');
 const app = express();
@@ -17,7 +20,7 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'))
 
 app.use(session({
-	secret: 'blah blah secret',
+	secret: process.env.SESSION_SECRET,
 	saveUninitialized: false, // GDPR
 	resave: false
 }))
