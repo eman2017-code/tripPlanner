@@ -29,6 +29,11 @@ div a{
 	display: inline-block;
 }
 
+.navLink {
+  color: black;
+  text-decoration: none;
+}
+
 div a::after {
  	content: '';
  	display: inline-block;
