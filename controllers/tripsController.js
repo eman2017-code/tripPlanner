@@ -49,10 +49,8 @@ router.get('/tripHomePage/:id', async(req, res, next) => {
 			'members'
 		)
 		.exec()
-		console.log(foundTrip);
 		res.render('trips/tripHomePage.ejs', {
 			savedTrip: foundTrip,
-			// tripItem: foundTrip.itemsToPlan
 		})
 	} catch(err){
 		next(err)
@@ -79,8 +77,6 @@ router.post('/tripHomePage', async (req, res, next) => {
 		const savedTrip = await createdTrip.save();
 		//this saves the trip to the session to be accessed later from a different route
 		req.session.savedTrip = savedTrip;
-		//console.log(savedTrip);
-		//res.redirect('trips/createTripHomePage/' + savedTrip._id);
 		res.redirect('/trips/tripHomePage/' + createdTrip._id)
 	}
 	catch(err) {
@@ -122,7 +118,7 @@ router.put('/:id', async(req, res, next) => {
 		const updateTrip = await Trip.findById(req.params.id)
 		updateTrip.destination = req.body.destination
 		updateTrip.startdate = req.body.startDate;
-		updateTrip.endDate = req.body.returnDate;
+		updateTrip.returnDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
 		await updateTrip.save();
 
@@ -155,17 +151,8 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-// ADD MEMBERS	
-// user will click add member
-// member new page will display
-// input form to add user will show
-// user will input a username
-// user will hit submit button
-	// this will activate a post route
-		// in the post route we will do....
-		// User.find({// find the username})
-		// if username !== null --> this means that it DOES exist
 
+// ADDING MEMBERS
 // new route
 // this created a new member to be added to the home page
 router.get('/addMembers', (req, res) => {
@@ -174,7 +161,6 @@ router.get('/addMembers', (req, res) => {
     	savedTrip: req.session.savedTrip
     });
 });
-
 
 // creating a member and adding it to the page
 router.post('/addMembers/:id', async (req, res, next) => {
