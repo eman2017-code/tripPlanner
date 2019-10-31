@@ -45,6 +45,9 @@ router.get('/tripHomePage/:id', async(req, res, next) => {
 		.populate({
 			path: 'suggestedItems'
 		})
+		.populate(
+			'members'
+		)
 		.exec()
 		console.log(foundTrip);
 		res.render('trips/tripHomePage.ejs', {
@@ -174,20 +177,17 @@ router.get('/addMembers', (req, res) => {
 
 
 // creating a member and adding it to the page
-router.post('/addMembers/', async (req, res, next) => {
+router.post('/addMembers/:id', async (req, res, next) => {
 	try {
 		// find the trip
 		const foundTrip = await Trip.findById(req.params.id)
-		// populate this path
-		.populate({
-			path: 'members'
-		})
-		// execute it
-		.exec()
+	
 		// find the user by the username from the form
-		const newMember = await User.find({username: req.body.username})
+		const newMember = await User.findOne({username: req.body.username})
+
 		// add the new member to the members array
 		foundTrip.members.push(newMember)
+
 		// save the foundTrip, because you added a new member to its members array
 		await foundTrip.save()
 
