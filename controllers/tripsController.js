@@ -203,22 +203,26 @@ router.get('/:id/showMember', async (req, res, next) => {
 });
 
 // delete route for member
-router.delete('/member/:id', async (req, res, next) => {
+router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 	try {
-		const foundTrip = await Trip.findOne({'members': req.params.id})
-		const foundMember = await User.findById(req.params.id)
-		// foundTrip.members.splice(foundMember._id)
-		// console.log(foundTrip.members, '<--- this is the members array before');
+		const foundTrip = await Trip.findById(req.params.tripId)
+		
+		console.log(foundTrip.members, 'before deleting');
+
 		for(let i = 0; i < foundTrip.members.length; i++){
-			// console.log(foundTrip.members[i]._id);
-			if(foundTrip.members[i] == foundMember.id){
-				// console.log('they match');
-				foundTrip.members.splice([i], 1);
+
+			if(foundTrip.members[i] == req.params.memberId){
+
+				foundTrip.members.splice(i, 1);
+
+				console.log(foundTrip.members, 'after deleting');
 				console.log('it worked');
 			} else {
 				console.log('they dont');
 			}
 		}
+
+		await foundTrip.save()
 
 
 		res.redirect('/trips/tripHomePage/' + foundTrip._id);
