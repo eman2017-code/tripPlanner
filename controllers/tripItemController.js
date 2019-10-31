@@ -90,6 +90,33 @@ router.put('/:id', async (req, res, next) => {
 	}
 })
 
+//delete route for trip item
+// router.delete('/:id', async (req, res) => {
+// 	// find the id of the trip and delete it
+// 	const foundTrip = await Trip.findById(req.params.id);
+
+//     TripItem.deleteOne({_id: req.params.id}, (err, result) => {
+//         if(err){
+//             res.send(err)
+//         } else {
+//         	// bring them back to the home page
+//             res.redirect('/trips/tripHomePage/' + foundTrip._id);
+
+//         }
+//     })
+// });
+router.delete('/:id', async (req, res, next) => {
+	try {
+		const foundTrip = await Trip.findOne({'itemsToPlan': req.params.id});
+		const deleteTripItem = await TripItem.findByIdAndRemove(req.params.id);
+		res.redirect('/trips/tripHomePage/' + foundTrip._id)
+	}
+	catch(err) {
+		next(err)
+	}
+})
+
+
 
 
 
