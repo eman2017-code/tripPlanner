@@ -93,7 +93,18 @@ router.put('/:id', async (req, res, next) => {
 // delete route
 router.delete('/:id', async (req, res, next) => {
 	try {
-		const foundTrip = await Trip.findOne({'itemsToPlan': req.params.id});
+		// const foundTrip = await Trip.findOne({'itemsToPlan': req.params.id});
+		const foundTrip = await Trip.findOne({
+			$or: [{
+				'itemsToPlan': req.params.id
+			},
+			{
+				'plannedItems': req.params.id
+			},
+			{
+				'suggestedItems': req.params.id
+			}]
+		})
 		const deleteTripItem = await TripItem.findByIdAndRemove(req.params.id);
 		res.redirect('/trips/tripHomePage/' + foundTrip._id)
 	}
