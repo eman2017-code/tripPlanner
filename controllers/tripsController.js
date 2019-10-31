@@ -203,51 +203,22 @@ router.get('/:id/showMember', async (req, res, next) => {
 });
 
 // delete route for member
-router.delete('/member/:memberId/:tripId', async (req, res, next) => {
+router.delete('/member/:id', async (req, res, next) => {
 	try {
 		const foundTrip = await Trip.findOne({'members': req.params.id})
-
+		const foundMember = await User.findById(req.params.id)
+		// foundTrip.members.splice(foundMember._id)
 		// console.log(foundTrip.members, '<--- this is the members array before');
-
-		// create a new array of id's that do not contain the deletedMember
-		// loop through the members in the new array
-		// save ndw array
-		//display members from copied array now trip.membrs array
-
-		// copy the array
-		
-		// console.log(deletedMember._id)
-
-		// create an array for members that have been removed
-		
-		// const copyOfMembers = foundTrip.members.slice();
-
-		// loop through the original list of members that have been added
-		for(let i = 0; i < foundTrip.members.length; i++) {
-
-			// const removedMembers = [];
-
-			console.log('----------------------');
-			console.log('this is the foundTrip._id.members');
-			console.log(foundTrip.members[i]._id);
-			console.log('----------------------');
-
-			// if the removed member's id == their shallow copy
-			if(foundTrip.members[i]._id === req.params.id) {
-				// remove the id from the array and push it into the removedMembers=[]
-				console.log('this one will be removed');
+		for(let i = 0; i < foundTrip.members.length; i++){
+			// console.log(foundTrip.members[i]._id);
+			if(foundTrip.members[i] == foundMember.id){
+				// console.log('they match');
+				foundTrip.members.splice([i], 1);
+				console.log('it worked');
 			} else {
-				console.log('didnt work my guy');
+				console.log('they dont');
 			}
-
 		}
-
-		// await foundTrip.members.splice(deletedMember, 1);
-		// await foundTrip.save()
-		console.log(foundTrip.members, '<--- this is the members array after');
-		//we are rpassing through 'deletedMember' which is just a an object but not does identify which
-		// INDEX it is at within the members array
-		// console.log('your member has been deleted!');
 
 
 		res.redirect('/trips/tripHomePage/' + foundTrip._id);
@@ -255,30 +226,7 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 	catch(err) {
 		next(err)
 	}
-})
-
-// router.delete('/member/:id', async (req, res, next) => {
-// 	try {
-// 		const foundTrip = await Trip.find({
-// 			'members': req.params.id
-// 		})
-// 		console.log(foundTrip);
-// 		const foundMember = await User.findById(req.params.id)
-// 		console.log(foundMember);
-// 		for (let i = 0; i < foundTrip.members.length; i++) {
-// 			console.log('-------These are the foundTrip.members--------');
-// 			console.log(foundTrip.members[i])
-// 			if(foundTrip.members[i]._id === foundMember._id){0
-// 				console.log('they match!')
-// 			}  else {
-// 				console.log('didnt work');
-// 			}
-// 		}
-// 	}
-// 	catch(err) {
-// 		next(err)
-// 	}
-// })
+});
 
 
 
