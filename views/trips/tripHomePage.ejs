@@ -32,8 +32,11 @@
 		<ul>
 			<% for (let i = 0; i < savedTrip.members.length; i++) { -%>
 				<li>
-					<%= savedTrip.members[i].username %>
+					<p><%= savedTrip.members[i].username %></p>
 				</li>
+				 <form action="/trips/member/<%=savedTrip.members[i]._id%>/<%= savedTrip._id %>?_method=DELETE" method="POST">
+                    <button type='Submit'>Delete</button>
+                </form>
 			<% } -%>
 		</ul>
 

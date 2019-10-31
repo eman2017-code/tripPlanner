@@ -170,6 +170,7 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	
 		// find the user by the username from the form
 		const newMember = await User.findOne({username: req.body.username})
+		// console.log(newMember, '<-- this is the newMember that has been added');
 
 		// add the new member to the members array
 		foundTrip.members.push(newMember)
@@ -182,11 +183,84 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	catch(err) {
 		next(err)
 	}
-})
+});
 
+// show route for each member
 
+// first we need to find a member by their id
+router.get('/:id/showMember', async (req, res, next) => {
+	try {
+		const foundMember = await User.findById(req.params.id)
+		console.log(foundMember, '<--- this is the foundMember object');
+		// console.log(newMember._id, '<--- this is the newMember id');
+		res.render('trips/memberDelete.ejs', {
+			foundMember: foundMember
+		})
+	}
+	catch(err) {
+		next(err)
+	}
+});
 
+// delete route for member
+router.delete('/member/:memberId/:tripId', async (req, res, next) => {
+	try {
+		const foundTrip = await Trip.findById(req.params.tripId)
 		
+		console.log(foundTrip.members, 'before deleting');
+
+		let memberIndex = -1
+
+		for(let i = 0; i < foundTrip.members.length; i++){
+
+			if(foundTrip.members[i] == req.params.memberId){
+
+				memberIndex = i
+
+				console.log(foundTrip.members, 'after deleting');
+				console.log('it worked');
+			} else {
+				console.log('they dont');
+			}
+		}
+
+		foundTrip.members.splice(memberIndex, 1);
+		await foundTrip.save()
+
+
+		res.redirect('/trips/tripHomePage/' + foundTrip._id);
+	}
+	catch(err) {
+		next(err)
+	}
+});
+
+// router.get('/:foundTripId', async (req, res, next) => {
+// 	try {
+// 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
+// 		console.log(trips);
+// 	}
+// 	catch(err) {
+// 		next(err)
+// 	}
+// })
+
+// route to show all the trips that user is apart of
+router.get('/showAllMyTrips', async (req, res, next) => {
+	try {
+		// console.log(req.session);
+		const foundUser = req.session.username
+		console.log(foundUser);
+		// const foundUser = await User.findById(req.params.id)
+		const foundTrips = await Trip.find({'members': req.params.foundTripId})
+		res.render('trips/showAllMyTrips.ejs', {
+			foundTrips: foundTrips
+		})
+	}
+	catch(err) {
+		next(err)
+	}
+});
 
 
 
