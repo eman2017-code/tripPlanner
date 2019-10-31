@@ -4,7 +4,7 @@ require('dotenv').config()
 // dependencies
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
