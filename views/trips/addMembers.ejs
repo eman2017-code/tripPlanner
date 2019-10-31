@@ -9,9 +9,10 @@
 
 	<h4>Reminder: The user that you add must have an account with this app</h4>
 
-	<form action="/trips/addMembers" method="POST">
+	<form action="/members/addMember/<%= savedTrip._id %>" method="POST">
 		Username: <input type="text" name="username">
-		<input type="submit" name="submit" value="Add Member">
+		<input type="hidden" name="tripId" value="<%=savedTrip._id%>">
+		<input type="submit" name="submit">
 	</form>
 
 </body>

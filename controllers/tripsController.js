@@ -163,24 +163,29 @@ router.delete('/:id', (req, res) => {
 		// User.find({// find the username})
 		// if username !== null --> this means that it DOES exist
 
-// get route for showing the members
+// new route
+// this created a new member to be added to the home page
 router.get('/addMembers', (req, res) => {
-	// add members page now renders
-	res.render('trips/addMembers.ejs');
+	// the saved trip has the information of the saved session of the user
+    res.render('trips/addMembers.ejs', {
+    	savedTrip: req.session.savedTrip
+    });
 });
 
-// post route to show the member(s) that the user has added
-router.post('/addMembers', async (req, res, next) => {
-	try {
-		const foundTrip = await Trip.findById(req.params.id);
-		console.log('this worked!!');
-		res.redirect('/trips/tripHomePage');
+
+// // post route to show the member(s) that the user has added
+// router.post('/addMembers/:id', async (req, res, next) => {
+// 	try {
+// 		const foundTrip = await Trip.findById(req.params.id);
+// 		// console.log(foundTrip, '<--- this is the foundTrip');
+// 		console.log('this worked!!');
+// 		res.redirect('/trips/tripHomePage/' + foundTrip._id);
 		
-	}
-	catch(err) {
-		next(err)
-	}
-})
+// 	}
+// 	catch(err) {
+// 		next(err)
+// 	}
+// })
 
 
 
