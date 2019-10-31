@@ -169,6 +169,19 @@ router.get('/addMembers', (req, res) => {
 	res.render('trips/addMembers.ejs');
 });
 
+// post route to show the member(s) that the user has added
+router.post('/addMembers', async (req, res, next) => {
+	try {
+		const foundTrip = await Trip.findById(req.params.id);
+		console.log('this worked!!');
+		res.redirect('/trips/tripHomePage');
+		
+	}
+	catch(err) {
+		next(err)
+	}
+})
+
 
 
 		
