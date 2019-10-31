@@ -170,6 +170,7 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	
 		// find the user by the username from the form
 		const newMember = await User.findOne({username: req.body.username})
+		// console.log(newMember, '<-- this is the newMember that has been added');
 
 		// add the new member to the members array
 		foundTrip.members.push(newMember)
@@ -182,7 +183,37 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	catch(err) {
 		next(err)
 	}
+});
+
+// show route for each member
+
+// first we need to find a member by their id
+router.get('/:id/showMember', async (req, res, next) => {
+	try {
+		const foundMember = await User.findById(req.params.id)
+		console.log(foundMember, '<--- this is the newMember object');
+		// console.log(newMember._id, '<--- this is the newMember id');
+		res.render('trips/memberDelete.ejs', {
+			foundMember: foundMember
+		})
+	}
+	catch(err) {
+		next(err)
+	}
+});
+
+// delete route for member
+router.delete('/:id', async (req, res, next) => {
+	try {
+		const foundTrip = await Trip.findOne({'members': req.params.id})
+		const deletedMember = await Trip.findByIdAndRemove(req.params.id);
+		res.redirect('/trips/tripHomePage' + foundTrip._id);
+	}
+	catch(err) {
+		next(err)
+	}
 })
+
 
 
 

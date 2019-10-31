@@ -32,7 +32,9 @@
 		<ul>
 			<% for (let i = 0; i < savedTrip.members.length; i++) { -%>
 				<li>
-					<%= savedTrip.members[i].username %>
+					<a href="/trips/<%=savedTrip.members[i]._id%>/showMember">
+						<%= savedTrip.members[i].username %>
+					</a>
 				</li>
 			<% } -%>
 		</ul>
