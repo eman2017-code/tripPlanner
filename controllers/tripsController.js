@@ -209,11 +209,13 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 		
 		console.log(foundTrip.members, 'before deleting');
 
+		let memberIndex = -1
+
 		for(let i = 0; i < foundTrip.members.length; i++){
 
 			if(foundTrip.members[i] == req.params.memberId){
 
-				foundTrip.members.splice(i, 1);
+				memberIndex = i
 
 				console.log(foundTrip.members, 'after deleting');
 				console.log('it worked');
@@ -222,6 +224,7 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 			}
 		}
 
+		foundTrip.members.splice(memberIndex, 1);
 		await foundTrip.save()
 
 
@@ -232,9 +235,28 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 	}
 });
 
+// router.get('/:foundTripId', async (req, res, next) => {
+// 	try {
+// 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
+// 		console.log(trips);
+// 	}
+// 	catch(err) {
+// 		next(err)
+// 	}
+// })
 
-
+router.get('/showAllMyTrips/:foundTripId', async (req, res, next) => {
+	try {
+		const foundTrips = await Trip.find({'members': req.params.foundTripId})
+		res.render('trips/showAllMyTrips.ejs', {
+			foundTrips: foundTrips
+		})
 		
+	}
+	catch(err) {
+		next(err)
+	}
+})
 
 
 
