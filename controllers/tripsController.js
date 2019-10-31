@@ -152,4 +152,50 @@ router.delete('/:id', (req, res) => {
     })
 });
 
+// ADD MEMBERS	
+// user will click add member
+// member new page will display
+// input form to add user will show
+// user will input a username
+// user will hit submit button
+	// this will activate a post route
+		// in the post route we will do....
+		// User.find({// find the username})
+		// if username !== null --> this means that it DOES exist
+
+// get route for showing the members
+router.get('/addMembers', (req, res) => {
+	res.render('trips/addMembers.ejs');
+})
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;
