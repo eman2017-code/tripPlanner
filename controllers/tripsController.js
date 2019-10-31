@@ -165,8 +165,11 @@ router.delete('/:id', (req, res) => {
 
 // get route for showing the members
 router.get('/addMembers', (req, res) => {
+	// add members page now renders
 	res.render('trips/addMembers.ejs');
-})
+});
+
+
 
 		
 
