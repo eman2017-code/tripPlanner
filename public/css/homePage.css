@@ -74,24 +74,10 @@ a{
   margin: 2px;
 }
 
-.row {
-  display: flex;
-  /*flex-direction: row;*/
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
 img {
-  width: 500px;
-  height: 500px;
-  margin: 1%;
+  width: 100%;
+  height: auto;
 }
-
-
-
-
-
-
 
 @media only screen and (max-width: 750px) {
   nav a{

@@ -236,7 +236,7 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 });
 
 // route to show all the trips that user is apart of
-router.get('/showAllMyTrips', async (req, res, next) => {
+router.get('/showAllMyTrips/', async (req, res, next) => {
 	try {
 		// console.log(req.session);
 		const foundUser = req.session.username
@@ -252,33 +252,5 @@ router.get('/showAllMyTrips', async (req, res, next) => {
 		next(err)
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;

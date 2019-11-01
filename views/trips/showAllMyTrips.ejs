@@ -11,12 +11,10 @@
 
 	<ul>
 		<% for (let i = 0; i < foundTrips.length; i++) { -%>
-			<a href="/trips/tripHomePage/<%=foundTrips[i]._id%>"><%= foundTrips[i].destination %></a>
+			<a href="/trips/showAllMyTrips/<%=foundTrips[i]._id%>"><%= foundTrips[i].destination %></a>
 			<p>asdf</p>
 		<% } -%>
 	</ul>
-
-	<!-- loop through all of the trips that the user has in their array -->
 
 </body>
 </html>
