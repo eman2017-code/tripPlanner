@@ -235,26 +235,17 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 	}
 });
 
-// router.get('/:foundTripId', async (req, res, next) => {
-// 	try {
-// 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
-// 		console.log(trips);
-// 	}
-// 	catch(err) {
-// 		next(err)
-// 	}
-// })
-
 // route to show all the trips that user is apart of
 router.get('/showAllMyTrips', async (req, res, next) => {
 	try {
 		// console.log(req.session);
 		const foundUser = req.session.username
-		console.log(foundUser);
+		console.log(foundUser, '<--- this is the found user');
 		// const foundUser = await User.findById(req.params.id)
 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
 		res.render('trips/showAllMyTrips.ejs', {
-			foundTrips: foundTrips
+			foundTrips: foundTrips,
+			foundUser: foundUser
 		})
 	}
 	catch(err) {

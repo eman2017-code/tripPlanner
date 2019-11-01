@@ -1,6 +1,4 @@
-body {
-	/*background-image: url('../images/luke-chesser-PHtp0cDBJSM-unsplash.jpg');*/
-	/*background-size: cover;*/
+/*body {
 	font-family: 'Karla', sans-serif;
 	background: rgb(214,202,202);
     background: radial-gradient(circle, rgba(214,202,202,1) 0%, rgba(122,117,118,1) 100%);
@@ -111,6 +109,116 @@ button {
 		margin-top: 5%;
 	}
 }
+*/
+
+body, html {
+	height: 100%
+}
+
+body h1 {
+	font-family: monospace;
+}
+
+h1 {
+	text-align: center;
+	color: #F2F2F2;
+}
+
+body {
+  background: url('../images/erik-odiin-jbQvJx2EWnU-unsplash.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.w3-border-grey {
+	margin: auto;
+	width: 40%;
+}
+
+.col {
+	display: inline-block;
+	margin-top: 10%;
+	padding: 3%;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+.row {
+	text-align: center;
+}
+
+.col a{
+	color: white;
+}
+
+.col a::after {
+	color: white;
+}
+
+form {
+	text-align: center;
+	color: #F2F2F2;
+	border: 1px solid #F2F2F2;
+	width: 30%;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 3%;
+	margin-top: 10%;
+	/*background-color: gray;*/
+}
+
+form input{
+	margin: 5%;
+	border: 1px solid white;
+	padding: 2%;
+}
+
+form label {
+	background-color: gray;
+	padding: 2%;
+}
+
+.field-half1 {
+	border: 1px solid white;
+}
+
+.field-half2 {
+	border: 1px solid white;
+	margin: 3%;
+}
+
+.field-half3 {
+	border: 1px solid white;
+}
+
+.btn {
+	margin: 4%;
+	width: 40%;
+	padding: 3%;
+}
+
+h2 {
+	text-align: center;	
+	color: #F2F2F2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
