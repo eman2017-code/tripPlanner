@@ -6,90 +6,95 @@
 </head>
 <body>
 	<a href="/users/homePage">Home</a>
-	<!-- <a href="/users/new">Register</a> -->
 	<a href="/users/logout">Logout</a>
 
 	<header>
-		<!-- this should be the name of the trip that the user entered -->
+		<!-- <div class="dates"> -->
+
 		<h1><%=savedTrip.destination%></h1> 
+		<h2>~ <%=savedTrip.description%> ~</h2>
 
-		<h4><%=savedTrip.startDate%>  <%=savedTrip.returnDate%></h4>
+		<h3>Start Date: <%=savedTrip.startDate%></h3>
+		<h3>Return Date: <%=savedTrip.returnDate%></h3>
 
-		<h4><%=savedTrip.description%></h4>
-		<br>
 		<a href="/trips/<%=savedTrip._id%>/tripEdit">Edit this trip</a>
-
 
 	</header>
 
-	<div class="wrapper">
-		
-<section class="columns">
 
-	<div class="column">
-		<h2>Members</h2>
+	<section class="lists-container">
 
-		<ul>
+	<div class="list">
+
+		<h3 class="list-title">Members</h3>
+
+		<ul class="list-items">
 			<% for (let i = 0; i < savedTrip.members.length; i++) { -%>
 				<li>
 					<p><%= savedTrip.members[i].username %></p>
 				</li>
-				 <form action="/trips/member/<%=savedTrip.members[i]._id%>/<%= savedTrip._id %>?_method=DELETE" method="POST">
+				<form action="/trips/member/<%=savedTrip.members[i]._id%>/<%= savedTrip._id %>?_method=DELETE" method="POST">
                     <button type='Submit'>Delete</button>
                 </form>
 			<% } -%>
 		</ul>
 
-		
-
-		<a href="/trips/addMembers/">Add Member</a>
+		<button class="add-card-btn btn"><a href="/trips/addMembers/">Add Member</a></button>
 
 	</div>
-	<div>
-		<div class="column">
-			<h6>TO DO</h6>
-			<!-- we need to loop through all of the items that were chosen from the to do list and display them here -->	
-			<ul>
-				<% for (let i = 0; i < savedTrip.itemsToPlan.length; i++) { -%>
 
-					<li>
-						<a href="/tripItems/<%=savedTrip.itemsToPlan[i]._id%>/tripItemEdit"><%=savedTrip.itemsToPlan[i].description%></a>
+	<div class="list">
+
+		<h3 class="list-title">To Do</h3>
+
+		<ul class="list-items">
+			<% for (let i = 0; i < savedTrip.itemsToPlan.length; i++) { -%>
+				<li>
+					<a href="/tripItems/<%=savedTrip.itemsToPlan[i]._id%>/tripItemEdit"><%=savedTrip.itemsToPlan[i].description%></a>
 					</li>
-
 				<% } -%>
-			</ul>
+		</ul>
 
-		</div>
-	
-		<div class="column">
-			<h6>ITENERARY</h6>			
-			<!-- we need to loop through all of the items that were chosen from the itenerary list and display them here -->
-			<ul>
-				<% for (let i = 0; i < savedTrip.plannedItems.length; i++) { -%>
-					<li>
-						<a href="/tripItems/<%=savedTrip.plannedItems[i]._id %>/tripItemEdit"><%=savedTrip.plannedItems[i].description%></a>
-					</li>
+		<button class="add-card-btn btn"><a href="/trips/createList">Add Item</a></button>
 
-				<% } -%>
-			</ul>
-		</div>
-  
-  		<div class="column">
-			<h6>WISH LIST</h6>			
-			<!-- we need to loop through all of the items that were chosen from the wish list and display them here -->
-			<ul>
-				<% for (let i = 0; i < savedTrip.suggestedItems.length; i++) { -%>
-					<li>
-						<a href="/tripItems/<%=savedTrip.suggestedItems[i]._id %>/tripItemEdit"><%=savedTrip.suggestedItems[i].description%></a>
-					</li>
-
-				<% } -%>
-			</ul>
-		</div>	
-
-		<a href="/trips/createList">Add Item</a>
 	</div>
-	
+
+	<div class="list">
+
+		<h3 class="list-title">Itenerary</h3>
+
+		<ul class="list-items">
+			<% for (let i = 0; i < savedTrip.plannedItems.length; i++) { -%>
+				<li>
+					<a href="/tripItems/<%=savedTrip.plannedItems[i]._id %>/tripItemEdit"><%=savedTrip.plannedItems[i].description%></a>
+				</li>
+
+			<% } -%>
+		</ul>
+
+		<button class="add-card-btn btn"><a href="/trips/createList">Add Item</a></button>
+
+	</div>
+
+	<div class="list">
+
+		<h3 class="list-title">Ideas</h3>
+
+		<ul class="list-items">
+			<% for (let i = 0; i < savedTrip.suggestedItems.length; i++) { -%>
+				<li>
+					<a href="/tripItems/<%=savedTrip.suggestedItems[i]._id %>/tripItemEdit"><%=savedTrip.suggestedItems[i].description%></a>
+				</li>
+
+			<% } -%>
+		</ul>
+
+		<button class="add-card-btn btn"><a href="/trips/createList">Add Item</a></button>
+
+	</div>
+
+	<!-- <button class="add-list-btn btn">Add a list</button> -->
+
 </section>
 
 </body>

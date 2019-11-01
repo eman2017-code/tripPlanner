@@ -1,6 +1,8 @@
 body {
-	font-family: 'Karla', sans-serif;
-	background-image: url('../images/luke-chesser-PHtp0cDBJSM-unsplash.jpg');
+	font-family: monospace;
+	/*background-image: url('../images/luke-chesser-PHtp0cDBJSM-unsplash.jpg');*/
+  background: rgb(214,202,202);
+  background: radial-gradient(circle, rgba(214,202,202,1) 0%, rgba(122,117,118,1) 100%);
 }
 
 h1 {
@@ -21,6 +23,19 @@ nav a{
 	font-size: 20px;
 	color: #000;
 }
+
+a{
+  max-width: 5px;
+  word-wrap: break-word;
+  color: black;
+}
+
+.textarea {  
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+    width: 100%;
+    }
 
 .line {
   position: relative;
