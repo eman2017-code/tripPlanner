@@ -170,7 +170,6 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	
 		// find the user by the username from the form
 		const newMember = await User.findOne({username: req.body.username})
-		// console.log(newMember, '<-- this is the newMember that has been added');
 
 		// add the new member to the members array
 		foundTrip.members.push(newMember)
@@ -191,8 +190,6 @@ router.post('/addMembers/:id', async (req, res, next) => {
 router.get('/:id/showMember', async (req, res, next) => {
 	try {
 		const foundMember = await User.findById(req.params.id)
-		console.log(foundMember, '<--- this is the foundMember object');
-		// console.log(newMember._id, '<--- this is the newMember id');
 		res.render('trips/memberDelete.ejs', {
 			foundMember: foundMember
 		})
@@ -207,8 +204,6 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 	try {
 		const foundTrip = await Trip.findById(req.params.tripId)
 		
-		console.log(foundTrip.members, 'before deleting');
-
 		let memberIndex = -1
 
 		for(let i = 0; i < foundTrip.members.length; i++){
@@ -217,8 +212,6 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 
 				memberIndex = i
 
-				console.log(foundTrip.members, 'after deleting');
-				console.log('it worked');
 			} else {
 				console.log('they dont');
 			}
@@ -238,9 +231,7 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 // route to show all the trips that user is apart of
 router.get('/showAllMyTrips/', async (req, res, next) => {
 	try {
-		// console.log(req.session);
 		const foundUser = req.session.username
-		console.log(foundUser, '<--- this is the found user');
 		// const foundUser = await User.findById(req.params.id)
 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
 		res.render('trips/showAllMyTrips.ejs', {

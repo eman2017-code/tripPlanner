@@ -32,7 +32,6 @@ router.post('/login', async(req, res, next) => {
 			username: req.body.username
 		})//if no user is found with that username direct to login page
 		if(foundUsers.length === 0){
-			// console.log('username does not exist')
 			res.redirect('/users/login')
 		} else {
 			const pw = req.body.password
@@ -62,7 +61,6 @@ router.post('/', async(req, res, next) => {
 		})
 		//if username does not exist do the following
 		if(user !== null){
-			// console.log('username is taken');
 			res.redirect('/users')
 		} else{
 			// users input 
