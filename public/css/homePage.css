@@ -75,8 +75,10 @@ a{
 }
 
 img {
-  width: 100%;
+  width: 40%;
   height: auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .line {
