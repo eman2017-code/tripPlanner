@@ -196,13 +196,4 @@ h1 {
         grid-row-gap: 0.6rem;
     }
 
-    .logo,
-    .list,
-    .list-items li,
-    .boards-btn,
-    .board-info-bar,
-    .board-controls .btn,
-    .user-settings-btn {
-        margin: 0;
-    }
 }
