@@ -10,16 +10,16 @@
 		Destination
 		<input type="text" name="destination" value="<%=trip.destination%>"><br>	
 		Departure
-		<input type="date" name="departure" value="<%=trip.startDate%>"><br>	
+		<input type="date" name="startDate" value="<%=trip.startDate%>"><br>	
 		Return
-		<input type="date" name="Return" value="<%=trip.endDate%>">	<br>
+		<input type="date" name="returnDate" value="<%=trip.returnDate%>"><br>
 		Description
 		<input type="text" name="description" value="<%=trip.description%>">	
 
 		<br>
-		<input type="hidden" name="">
-		<input type="submit" name="" value="submit changes">
+		<input type="submit" name="submit" value="submit changes">
 	</form>
+
 	<form method='POST' action='/trips/<%=trip._id%>?_method=DELETE'>
 		<button type='submit'>Delete</button>
 	</form>
