@@ -24,9 +24,9 @@
 			* An Itinerary list
 			* A Suggestions list
 - User can see their current trips, past trips, and groups they are currenty apart of
+- User can see most asked questions and and see answer (FAQ Form)
 
 ## Nice to haves 
-- User can see most asked questions and and see answer (FAQ Form)
 - Trip Advisor/Points of Interest API
 	- User will be to see recommendations/helpful tips based on destination from actual people that are then added into a suggestions area for the group to see.
 
