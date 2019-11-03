@@ -34,6 +34,9 @@ app.use('/trips', tripController)
 const tripItemController = require('./controllers/tripItemController.js')
 app.use('/tripItems', tripItemController)
 
+const faqController = require('./controllers/faqController.js')
+app.use('/faq', faqController)
+
 app.listen(PORT, () => {
 	console.log('Server listening on port ' + PORT );
 });
