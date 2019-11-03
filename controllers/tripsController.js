@@ -154,8 +154,15 @@ router.delete('/:id', (req, res) => {
 // new route
 // this created a new member to be added to the home page
 router.get('/addMembers', (req, res) => {
+	let messageToShow = ""
+
+	if(req.session.message) {
+		messageToShow = req.session.message
+		req.session.message = "" 
+	} 
 	// the saved trip has the information of the saved session of the user
     res.render('trips/addMembers.ejs', {
+    	message: messageToShow,
     	savedTrip: req.session.savedTrip
     });
 });
@@ -168,15 +175,21 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	
 		// find the user by the username from the form
 		const newMember = await User.findOne({username: req.body.username})
-		const creatorOfTrip = await req.session.username
 
-		// add the new member to the members array
-		foundTrip.members.push(newMember);
-
-		// save the foundTrip, because you added a new member to its members array
-		await foundTrip.save()
-
-		res.redirect('/trips/tripHomePage/' + foundTrip._id)
+		// if the username that the user entered does not exist
+		if(newMember === null) {
+			// show this message
+			req.session.message = "User not found!"
+			res.redirect('/trips/tripHomePage/' + foundTrip._id)
+		} else {			
+			// add the new member to the members array
+			foundTrip.members.push(newMember);
+	
+			// save the foundTrip, because you added a new member to its members array
+			await foundTrip.save()
+	
+			res.redirect('/trips/tripHomePage/' + foundTrip._id)
+		}
 	}	
 	catch(err) {
 		next(err)
@@ -233,7 +246,6 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 router.get('/showAllMyTrips/', async (req, res, next) => {
 	try {
 		const foundUser = req.session.username
-		console.log(foundUser, '<--- user that clicked show all my Trips');
 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
 		res.render('trips/showAllMyTrips.ejs', {
 			foundTrips: foundTrips,
