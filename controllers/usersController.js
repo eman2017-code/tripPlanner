@@ -56,7 +56,7 @@ router.post('/login', async(req, res, next) => {
 
 			req.session.message = "Invalid username or password!"
 
-			res.redirect('/users/login')
+			res.redirect('/login')
 		} else {
 			const pw = req.body.password
 			// if the password that they entered is the correct
@@ -64,11 +64,10 @@ router.post('/login', async(req, res, next) => {
 				// they are not logged in
 				req.session.loggedIn = true;
 				req.session.username = foundUsers[0].username
-				console.log(req.session.username, '<-- this is the username when logging in');
 				// take them to the home page
-				res.redirect('/users/homePage')
+				res.redirect('/homePage')
 			} else {
-				res.redirect('/users/login')
+				res.redirect('/login')
 			}
 		}
 	} catch(err){
@@ -89,7 +88,7 @@ router.post('/', async(req, res, next) => {
 
 			req.session.message = "The Username taken!"
 
-			res.redirect('/users')
+			res.redirect('/')
 		} else {
 			// users input 
 			const pw = req.body.password
@@ -101,7 +100,7 @@ router.post('/', async(req, res, next) => {
 			// they are now logged in
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			res.redirect('/users/homePage');
+			res.redirect('/homePage');
 		}
 	} catch(err){
 		next(err)
@@ -112,7 +111,7 @@ router.post('/', async(req, res, next) => {
 router.get('/logout', async(req, res, next) => {
 	try {
 		await req.session.destroy();
-		res.redirect('/users')
+		res.redirect('/')
 	} catch(err){
 		next(err)
 	}

@@ -143,7 +143,7 @@ router.delete('/:id', (req, res) => {
             res.send(err)
         } else {
         	// bring them back to the home page
-            res.redirect('/users/homePage');
+            res.redirect('/homePage');
 
         }
     })

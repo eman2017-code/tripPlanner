@@ -26,7 +26,7 @@ app.use(session({
 
 
 const userController = require('./controllers/usersController.js');
-app.use('/users', userController);
+app.use('/', userController);
 
 const tripController = require('./controllers/tripsController.js')
 app.use('/trips', tripController)
