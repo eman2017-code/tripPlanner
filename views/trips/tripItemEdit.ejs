@@ -8,9 +8,10 @@
 
 	<h1>Trip Item Edit Page</h1>
 
-	<form action="/tripItems/<%=foundItem._id%>?_method=PUT" method="POST">
-		Description: <input type="text" name="description" value="<%=foundItem.description%>">
-		<input type="submit" name="submit" value='submit'>
+	<form method="POST" action="/tripItems/<%=foundItem._id%>?_method=PUT">
+		Description
+		<textarea type="text" name="description" value="<%=foundItem.description%>"></textarea>
+ 		<input type="submit" name="" value='submit changes'>
 	</form>
 
 	<form method='POST' action='/tripItems/<%=foundItem._id%>?_method=DELETE'>

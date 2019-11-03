@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs');
 
 // rendering create trip page
 router.get('/createTripPlan', (req, res) => {
+	const foundUser = req.session.username;
+	const foundTrip = Trip.findById(req.params.id)
 	res.render('trips/createTripPlan.ejs')
 });
 
@@ -18,7 +20,7 @@ router.get('/addNewItem/:id', async (req, res, next) => {
 		// the foundTrip now is saved within the current session of the user
 		req.session.savedTrip = foundTrip;
 		// render the home page for the actual trip for user
-		res.render('trips/createTripHomePageDisplay.ejs', {
+		res.render('trips/tripHomePage.ejs', {
 			// the saved trip is now the saved session of the user
 			savedTrip: req.session.savedTrip
 		})
@@ -27,11 +29,6 @@ router.get('/addNewItem/:id', async (req, res, next) => {
 		next(err)
 	}
 })
-
-//create group route
-router.get('/createGroup', (req, res) => {
-	res.render('trips/createGroup.ejs')
-});
 
 router.get('/tripHomePage/:id', async(req, res, next) => {
 	try {
@@ -120,6 +117,7 @@ router.put('/:id', async(req, res, next) => {
 		updateTrip.startdate = req.body.startDate;
 		updateTrip.returnDate = req.body.returnDate;
 		updateTrip.description = req.body.description;
+		// save the trip because we are mutating the document
 		await updateTrip.save();
 
 		res.redirect('/trips/tripHomePage')
@@ -170,9 +168,10 @@ router.post('/addMembers/:id', async (req, res, next) => {
 	
 		// find the user by the username from the form
 		const newMember = await User.findOne({username: req.body.username})
+		const creatorOfTrip = await req.session.username
 
 		// add the new member to the members array
-		foundTrip.members.push(newMember)
+		foundTrip.members.push(newMember);
 
 		// save the foundTrip, because you added a new member to its members array
 		await foundTrip.save()
@@ -202,12 +201,14 @@ router.get('/:id/showMember', async (req, res, next) => {
 // delete route for member
 router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 	try {
+		// find the trip
 		const foundTrip = await Trip.findById(req.params.tripId)
 		
 		let memberIndex = -1
 
+		// loop through members
 		for(let i = 0; i < foundTrip.members.length; i++){
-
+			// if these two match -- the one that is clicked on
 			if(foundTrip.members[i] == req.params.memberId){
 
 				memberIndex = i
@@ -232,7 +233,7 @@ router.delete('/member/:memberId/:tripId', async (req, res, next) => {
 router.get('/showAllMyTrips/', async (req, res, next) => {
 	try {
 		const foundUser = req.session.username
-		// const foundUser = await User.findById(req.params.id)
+		console.log(foundUser, '<--- user that clicked show all my Trips');
 		const foundTrips = await Trip.find({'members': req.params.foundTripId})
 		res.render('trips/showAllMyTrips.ejs', {
 			foundTrips: foundTrips,
