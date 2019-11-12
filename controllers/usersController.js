@@ -12,12 +12,31 @@ router.get('/', (req, res) => {
 
 //rendering new registration page
 router.get('/new', (req, res) => {
-	res.render('users/register.ejs')
+
+	let messageToShow = ""
+
+	if(req.session.message) {
+		messageToShow = req.session.message
+		req.session.message = "" 
+	} 
+
+	res.render('users/register.ejs', {
+		message: messageToShow
+	})
 });
 
 // rendering login page
 router.get('/login', (req, res) => {
-	res.render('users/login.ejs')
+
+	let messageToShow = ""
+
+	if(req.session.message) {
+		messageToShow = req.session.message
+		req.session.message = ""
+	} 
+	res.render('users/login.ejs', {
+		message: messageToShow
+	})
 });
 
 // rendering home page
@@ -27,12 +46,17 @@ router.get('/homePage', (req, res) => {
 
 //login route
 router.post('/login', async(req, res, next) => {
-	try {//this is findini a user object that matches the input username on th login form
+	try {
+		// this is finds a user object that matches the input username on th login form
 		const foundUsers = await User.find({
 			username: req.body.username
-		})//if no user is found with that username direct to login page
+		})
+		//if no user is found with that username direct to login page
 		if(foundUsers.length === 0){
-			res.redirect('/users/login')
+
+			req.session.message = "Invalid username or password!"
+
+			res.redirect('/login')
 		} else {
 			const pw = req.body.password
 			// if the password that they entered is the correct
@@ -41,9 +65,9 @@ router.post('/login', async(req, res, next) => {
 				req.session.loggedIn = true;
 				req.session.username = foundUsers[0].username
 				// take them to the home page
-				res.redirect('/users/homePage')
+				res.redirect('/homePage')
 			} else {
-				res.redirect('/users/login')
+				res.redirect('/login')
 			}
 		}
 	} catch(err){
@@ -60,9 +84,12 @@ router.post('/', async(req, res, next) => {
 			username: username
 		})
 		//if username does not exist do the following
-		if(user !== null){
-			res.redirect('/users')
-		} else{
+		if(user !== null) {
+
+			req.session.message = "The Username taken!"
+
+			res.redirect('/')
+		} else {
 			// users input 
 			const pw = req.body.password
 			const hashedPw = bcrypt.hashSync(pw, bcrypt.genSaltSync(10));
@@ -73,7 +100,7 @@ router.post('/', async(req, res, next) => {
 			// they are now logged in
 			req.session.loggedIn = true;
 			req.session.username = createdUser.username;
-			res.redirect('/users/homePage');
+			res.redirect('/homePage');
 		}
 	} catch(err){
 		next(err)
@@ -84,7 +111,7 @@ router.post('/', async(req, res, next) => {
 router.get('/logout', async(req, res, next) => {
 	try {
 		await req.session.destroy();
-		res.redirect('/users')
+		res.redirect('/')
 	} catch(err){
 		next(err)
 	}

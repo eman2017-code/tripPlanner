@@ -61,9 +61,19 @@ router.get('/:id/tripItemEdit', async (req, res, next) => {
 // editing actual item
 router.put('/:id', async (req, res, next) => {
 	try {
-		// find the trip
-		const foundTrip = await Trip.findOne({'itemsToPlan': req.params.id});
-		// first find the items
+		// find the trip that coorelates to the specific item that was clicked on
+		const foundTrip = await Trip.findOne({
+			$or: [{
+				'itemsToPlan': req.params.id
+			},
+			{
+				'plannedItems': req.params.id
+			},
+			{
+				'suggestedItems': req.params.id
+			}]
+		})
+		// find the items
 		const updatedItem = await TripItem.findById(req.params.id);
 		// update the description
 		updatedItem.description = req.body.description
@@ -80,7 +90,6 @@ router.put('/:id', async (req, res, next) => {
 // delete route
 router.delete('/:id', async (req, res, next) => {
 	try {
-		// const foundTrip = await Trip.findOne({'itemsToPlan': req.params.id});
 		const foundTrip = await Trip.findOne({
 			$or: [{
 				'itemsToPlan': req.params.id

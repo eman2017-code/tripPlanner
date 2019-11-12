@@ -11,8 +11,9 @@
 
 	<ul>
 		<% for (let i = 0; i < foundTrips.length; i++) { -%>
-			<a href="/trips/tripsHomePage/<%=foundTrips[i]._id%>"><%= foundTrips[i].destination %></a>
-			<p>asdf</p>
+			<a href="/trips/showAllMyTrips/<%=foundTrips[i]._id%>"><%= foundTrips[i].destination %></a>
+			<a href="/trips/showAllMyTrips/<%= foundUser[i]._id %>"><%=foundUser[i].username%></a>
+			<p>this is a test</p>
 		<% } -%>
 	</ul>
 

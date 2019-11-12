@@ -6,11 +6,15 @@
 
 </head>
 <body>
-	<a href="/users">Home</a>
-	<a href="/users/new">Register</a>
+	<a href="/">Home</a>
+	<a href="/new">Register</a>	
+
+	<h2>
+		<%= message %>
+	</h2>
 
 	<article id="contact">
-			<form action="/users/login" method="POST">
+			<form action="/login" method="POST">
 			<h2>Login</h2>
 				<div class="field-half2">
 					<label>Enter Username</label>
